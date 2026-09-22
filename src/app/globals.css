@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+/* ========================================
+   DESIGN TOKENS
+======================================== */
+
+:root {
+  --background: #f6f7f9;
+  --foreground: #111827;
+
+  --surface: #ffffff;
+  --surface-muted: #eef1f5;
+
+  --border: #dfe3e8;
+  --border-strong: #c8ced6;
+
+  --text-primary: #111827;
+  --text-secondary: #5f6875;
+  --text-muted: #8a939f;
+
+  /* Tech accent */
+  --accent: #2563eb;
+  --accent-bright: #3b82f6;
+  --accent-dark: #1d4ed8;
+
+  --dark: #0a0a0a;
+  --dark-surface: #111111;
+
+  /* Fonts */
+  --font-body: var(--font-inter);
+  --font-heading: var(--font-inter-tight);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-serif: var(--font-instrument-serif);
+}
+
+
+/* ========================================
+   RESET
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: var(--background);
+  color: var(--foreground);
+
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+
+/* ========================================
+   TYPOGRAPHY
+======================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: var(--font-heading);
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ========================================
+   SELECTION
+======================================== */
+
+::selection {
+  background: var(--accent);
+  color: white;
+}
+
+
+/* ========================================
+   FOCUS
+======================================== */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+
+/* ========================================
+   SCROLLBAR
+======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+
+/* ========================================
+   UTILITY CLASSES
+======================================== */
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+}
+
+
+/* Small technical labels */
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+/* ========================================
+   TECH ACCENT
+======================================== */
+
+.text-accent {
+  color: var(--accent);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.border-accent {
+  border-color: var(--accent);
+}
+
+
+/* ========================================
+   DARK SURFACE
+======================================== */
+
+.dark-section {
+  background: var(--dark);
+  color: white;
+}
+
+
+
+
+/* ========================================
+   CONTAINER
+======================================== */
+
+.container-main {
+  width: min(1280px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+@media (min-width: 768px) {
+  .container-main {
+    width: min(1280px, calc(100% - 64px));
+  }
+}
+
+
+.tech-grid {
+  background-color: var(--background);
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(37, 99, 235, 0.15) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(37, 99, 235, 0.15) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+}
+
+.marquee-track {
+  animation: marquee 25s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+
+
+  
+
+/* ========================================
+   REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+
+  .animate-float,
+  .animate-float-slow {
+    animation: none;
+  }
+
+}
