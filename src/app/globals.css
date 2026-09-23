@@ -56,6 +56,7 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden;
 }
 
 
@@ -208,6 +209,21 @@ a {
   }
 }
 
+.decorative-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(37, 99, 235, 0.12) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(37, 99, 235, 0.12) 1px,
+      transparent 1px
+    );
+  background-size: 24px 24px;
+}
+
 
 .tech-grid {
   background-color: var(--background);
@@ -223,6 +239,44 @@ a {
       transparent 1px
     );
   background-size: 48px 48px;
+}
+
+
+
+
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); 
+  }
+}
+
+.page-loaded .hero-enter {
+  animation: hero-enter 700ms ease-out both;
+}
+
+.hero-enter-delay-1{
+  animation-delay: 100ms;
+}
+.hero-enter-delay-2{
+  animation-delay: 180ms;
+}
+.hero-enter-delay-3{
+  animation-delay: 260ms;
+}
+.hero-enter-delay-4{
+  animation-delay: 340ms;
+}
+.hero-enter-delay-5{
+  animation-delay: 420ms;
+}
+.hero-enter-delay-6{
+  animation-delay: 520ms;
 }
 
 .marquee-track {
@@ -293,13 +347,25 @@ a {
     transition-duration: 0.01ms !important;
   }
 
-  .marquee-track {
+  .marquee-track,
+  .animate-float,
+  .animate-float-slow,
+  .hero-enter,
+  .hero-enter-delay-1,
+  .hero-enter-delay-2,
+  .hero-enter-delay-3,
+  .hero-enter-delay-4,
+  .hero-enter-delay-5
+   {
+    animation: none;
+  }
+  .hero-enter {
+    opacity: 1;
+    transform: none;
+  }
+  .page-loaded .hero-enter {
     animation: none;
   }
 
-  .animate-float,
-  .animate-float-slow {
-    animation: none;
-  }
 
 }

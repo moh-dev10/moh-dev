@@ -19,6 +19,9 @@ export default function HeroVisual() {
       aria-hidden="true"
       className="relative"
     >
+          <div
+        className="decorative-grid absolute -inset-8 -z-10 rounded-3xl opacity-60"
+      />
       <div className="animate-float-slow relative mx-auto w-full max-w-[620px]">
 
         {/* Main browser / developer card */}

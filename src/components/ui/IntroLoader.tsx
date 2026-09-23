@@ -1,8 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+type IntroLoaderProps = {
+  onComplete?:() => void;
+}
 
-export default function IntroLoader() {
+export default function IntroLoader({
+  onComplete,
+}: IntroLoaderProps) {
   const [progress, setProgress] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -26,10 +31,11 @@ export default function IntroLoader() {
 
     const timer = setTimeout(() => {
       setIsVisible(false);
-    }, 600);
+      onComplete?.();
+    }, 150);
 
     return () => clearTimeout(timer);
-  }, [progress]);
+  }, [progress,onComplete]);
 
   if (!isVisible) return null;
 
@@ -51,9 +57,9 @@ export default function IntroLoader() {
         MOH<span className="text-[var(--accent)]">°</span>DEV
       </h1>
 
-      <div className="mt-8 h-px w-full bg-white/15">
+      <div className="mt-8 h-0.75 w-full bg-white/15">
         <div
-          className="h-full bg-[var(--accent)] transition-[width] duration-100"
+          className="h-full bg-[var(--accent)] transition-[width] duration-100 "
           style={{ width: `${progress}%` }}
         />
       </div>
