@@ -128,13 +128,14 @@ export default function Hero() {
           <dl className="mt-10 grid max-w-2xl grid-cols-3 border-t border-[var(--border)] pt-6">
             {heroStats.map((stat) => (
               <div key={stat.label} className="pr-4">
-                <dt className="font-mono text-[9px] uppercase leading-4 tracking-[0.08em] text-[var(--text-muted)]">
-                  {stat.label}
-                </dt>
 
                 <dd className="mt-1 font-heading text-2xl font-bold tracking-tight md:text-3xl">
                   {stat.value}
                 </dd>
+
+                <dt className="font-mono text-[10px] md:text-sm uppercase leading-4 tracking-[0.08em] text-[var(--text-muted)]">
+                  {stat.label}
+                </dt>
               </div>
             ))}
           </dl>

@@ -36,7 +36,7 @@ export default function Navbar() {
           href="#contact"
           className="hidden rounded-md border border-[var(--foreground)] px-5 py-2.5 font-mono text-xs uppercase tracking-wider transition-all duration-200 hover:border-accent hover:bg-[var(--accent)] hover:text-white md:block"
         >
-          Let's work together →
+          Let&apos;s work together →
         </a>
 
         {/* Mobile button — functionality later */}

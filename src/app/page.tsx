@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import Marquee from "@/components/sections/Marquee";
 import WhyHireMe from "@/components/sections/WhyHireMe";
+import Work from "@/components/sections/Work";
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
      <main>
        <Hero/>
        <Marquee/>
-       <WhyHireMe/>
+       <WhyHireMe/> 
+       <Work/>
      </main>
     </>
   );
