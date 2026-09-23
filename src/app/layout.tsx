@@ -1,3 +1,4 @@
+import IntroLoader from "@/components/ui/IntroLoader";
 import type { Metadata } from "next";
 import {
   Inter,
@@ -44,7 +45,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable} ${instrumentSerif.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <IntroLoader/>
+        {children}
+        </body>
     </html>
   );
 }
