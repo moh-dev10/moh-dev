@@ -5,6 +5,8 @@ import {
   MessageSquare,
 } from "lucide-react";
 
+import Reveal from "../ui/Reveal";
+
 const reasons = [
   {
     icon: ArrowUpRight,
@@ -42,23 +44,25 @@ export default function WhyHireMe() {
       <div className="container-main">
         {/* Section intro */}
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
+          <Reveal delay={200}>
           <div className="max-w-3xl">
             <span className="mono-label text-accent">
               Why businesses hire me
             </span>
 
-            <h2
-              id="why-hire-me-title"
-              className="font-heading text-3xl font-bold leading-[0.98] tracking-[-0.035em] sm:text-4xl md:text-5xl"
-            >
-              Not just a website.
-              <br />
-              A tool built to{" "}
-              <em className="font-serif font-normal tracking-normal text-accent">
-                bring business.
-              </em>
-            </h2>
+              <h2
+                id="why-hire-me-title"
+                className="font-heading text-3xl font-bold leading-[0.98] tracking-[-0.035em] sm:text-4xl md:text-5xl"
+              >
+                Not just a website.
+                <br />
+                A tool built to{" "}
+                <em className="font-serif font-normal tracking-normal text-accent">
+                  bring business.
+                </em>
+              </h2>
           </div>
+            </Reveal>
 
           <div className="">
             
@@ -83,6 +87,9 @@ export default function WhyHireMe() {
             const Icon = reason.icon;
 
             return (
+              <Reveal 
+              key={reason.title}
+              delay={ index * 100}>
               <article
                 key={reason.title}
                 className={`group border-b border-[var(--border)] py-8 md:p-10 ${
@@ -117,6 +124,7 @@ export default function WhyHireMe() {
                   </div>
                 </div>
               </article>
+              </Reveal>
             );
           })}
         </div>

@@ -25,17 +25,20 @@ export default function Hero() {
   return (
     <section
       aria-labelledby="hero-title"
-      className="tech-grid min-h-screen pt-16"
+      className="tech-grid relative overflow-hidden min-h-screen pt-16"
     >
+      <div aria-hidden="true"
+      className="pointer-events-none absolute left-[-120px] top-40 h-64 w-64 rounded-full
+       border border-[var(--accent)]/10"/>
       <div className="container-main grid min-h-[calc(100vh-4rem)] items-center gap-16 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 lg:py-20">
         {/* Content */}
         <div className="max-w-3xl">
           {/* Eyebrow */}
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-3">
+          <div className="hero-enter hero-enter-delay-1 flex flex-wrap items-center gap-x-4 gap-y-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-white/80 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-secondary)] backdrop-blur-sm">
               <span
                 aria-hidden="true"
-                className="h-2 w-2 rounded-full bg-green-500"
+                className=" h-2 w-2 rounded-full bg-green-500"
               />
 
               Available for new projects
@@ -49,7 +52,7 @@ export default function Hero() {
           {/* Heading */}
           <h1
             id="hero-title"
-            className="mt-8 font-heading text-5xl font-bold leading-[0.94] tracking-[-0.045em] sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem]"
+            className="hero-enter hero-enter-delay-2 mt-8 font-heading text-5xl font-bold leading-[0.94] tracking-[-0.045em] sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem]"
           >
             I build websites
             
@@ -65,7 +68,7 @@ export default function Hero() {
           </h1>
 
           {/* Description */}
-          <p className="mt-8 max-w-2xl text-base leading-7 text-[var(--text-secondary)] md:text-lg md:leading-8">
+          <p className="hero-enter hero-enter-delay-3 mt-8 max-w-2xl text-base leading-7 text-[var(--text-secondary)] md:text-lg md:leading-8">
             I&apos;m{" "}
             <span className="font-semibold text-[var(--foreground)]">
               Mohamed
@@ -76,7 +79,7 @@ export default function Hero() {
           </p>
 
           {/* CTAs */}
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="hero-enter hero-enter-delay-4 mt-10 flex flex-wrap gap-3">
             <a
               href="#contact"
               className="group inline-flex items-center gap-2 rounded-md bg-[var(--accent)] px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.08em] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--accent-dark)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
@@ -107,7 +110,7 @@ export default function Hero() {
           </div>
 
           {/* Availability / Languages */}
-          <div className="mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs">
+          <div className="hero-enter hero-enter-delay-5 mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs">
             <span className="font-medium text-[var(--foreground)]">
               Replies within 24h
             </span>
@@ -125,7 +128,7 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <dl className="mt-10 grid max-w-2xl grid-cols-3 border-t border-[var(--border)] pt-6">
+          <dl className="hero-enter hero-enter-delay-6 mt-10 grid max-w-2xl grid-cols-3 border-t border-[var(--border)] pt-6">
             {heroStats.map((stat) => (
               <div key={stat.label} className="pr-4">
 
@@ -142,7 +145,10 @@ export default function Hero() {
         </div>
 
         {/* Visual */}
-        <HeroVisual />
+          <div className="hero-enter hero-enter-delay-3">
+            <HeroVisual />
+          </div>
+       
       </div>
     </section>
   );

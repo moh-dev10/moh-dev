@@ -1,4 +1,3 @@
-import IntroLoader from "@/components/ui/IntroLoader";
 import type { Metadata } from "next";
 import {
   Inter,
@@ -6,6 +5,9 @@ import {
   JetBrains_Mono,
   Instrument_Serif,
 } from "next/font/google";
+
+import PageShell from "@/components/ui/PageShell";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -46,9 +48,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable} ${instrumentSerif.variable}`}
     >
       <body>
-        <IntroLoader/>
-        {children}
-        </body>
+        <PageShell>{children}</PageShell>
+      </body>
     </html>
   );
 }
