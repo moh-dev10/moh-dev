@@ -1,4 +1,4 @@
-        import { Check } from "lucide-react"
+import Image from "next/image";
 
         import Reveal from "../ui/Reveal"
         export default function About() {
@@ -23,9 +23,11 @@
                             <Reveal
                              direction="left">
                                 <div className="relative min-h-[420px] overflow-hidden rounded-3xl border border-[var(--border)]">
-                                    <img 
+                                    <Image
                                     src="/moha.webp" 
                                     alt="Mohamed — Full-Stack Web Developer" 
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 40vw"
                                     className="absolute inset-0 h-full w-full object-cover"
                                     />
                                 </div>
@@ -36,9 +38,9 @@
                            <Reveal direction="right">
                                 <div className="flex flex-col justify-center gap-5">
                                     <h2 className="max-w-xl font-heading text-4xl font-bold">A developer with a <em className="font-serif text-accent">business mindset.</em></h2>
-                                    <p className="max-w-2xl leading-7 text-[var(--text-secondary)]">I'm Mohamed, a young Full-Stack Web Developer based in Algeria. I'm actively growing toward full-stack engineering —
+                                    <p className="max-w-2xl leading-7 text-[var(--text-secondary)]">I&apos;m Mohamed, a young Full-Stack Web Developer based in Algeria. I&apos;m actively growing toward full-stack engineering —
                                         while already shipping real websites and stores for real clients.</p>
-                                    <p className="max-w-2xl leading-7 text-[var(--text-secondary)]">My focus isn't just writing code. It's understanding your customers, your sales process, and building a website 
+                                    <p className="max-w-2xl leading-7 text-[var(--text-secondary)]">My focus isn&apos;t just writing code. It&apos;s understanding your customers, your sales process, and building a website 
                                         that actually helps: more inquiries, easier ordering, stronger credibility.</p>    
                                 <div className="grid grid-cols-2 gap-4">
                                     {mindsetPrinciples.map((p) => (
