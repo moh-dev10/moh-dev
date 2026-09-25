@@ -1,6 +1,6 @@
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 md:py-28">
+    <section id="contact" className="section-padding">
       <div className="container-main">
         <div className="max-w-3xl">
           <p className="font-mono text-accent">GET IN TOUCH</p>
@@ -20,7 +20,7 @@ export default function Contact() {
           </p>
 
           <a
-            href="mailto:your@email.com"
+            href="mailto:mohamedhadou820@email.com"
             className="mt-8 inline-flex items-center rounded-full bg-[var(--text-primary)] px-6 py-3 font-medium text-white! transition-transform duration-300 hover:-translate-y-1"
           >
             Start a conversation
@@ -33,10 +33,10 @@ export default function Contact() {
               EMAIL
             </p>
             <a
-              href="mailto:your@email.com"
+              href="mailto:mohamedhadou820@email.com"
               className="mt-2 inline-block hover:text-accent"
             >
-              your@email.com
+              mohamedhadou820@email.com
             </a>
           </div>
 
@@ -53,13 +53,13 @@ export default function Contact() {
             </p>
 
             <div className="mt-2 flex gap-4">
-              <a href="#" className="hover:text-accent">
+              <a href="https://github.com/moh-dev10" className="hover:text-accent">
                 GitHub
               </a>
-              <a href="#" className="hover:text-accent">
+              <a href="https://linkedin.com/in/moh-dev10" className="hover:text-accent">
                 LinkedIn
               </a>
-              <a href="#" className="hover:text-accent">
+              <a href="https://instagram.com/mohdev10" className="hover:text-accent">
                 Instagram
               </a>
             </div>

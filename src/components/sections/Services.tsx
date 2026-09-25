@@ -6,7 +6,7 @@ import Reveal from "../ui/Reveal";
 
 export default function Services() {
     return (
-        <section id="services" className="py-20 md:py-28">
+        <section id="services" className="section-padding">
             <div className="container-main">
                 <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
                     <Reveal>

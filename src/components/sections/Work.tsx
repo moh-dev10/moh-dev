@@ -8,15 +8,15 @@ export default function Work() {
         (project) => project.featured
     );
     return(
-        <section id="work" className="py-20 md:py-28">
+        <section id="work" className="section-padding">
            <div className="container-main">
              <div className="md:flex items-center justify-between">
                  <Reveal>
                      <div>
         
-                        <span className="mono-label text-accent">
+                        <p className="font-mono text-accent uppercase">
                             Work
-                        </span>
+                        </p>
         
                         <h2 className="mt-4 max-w-3xl font-heading text-4xl font-bold tracking-tight md:text-5xl">
                             Real projects.<br />

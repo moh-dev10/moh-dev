@@ -39,16 +39,16 @@ export default function WhyHireMe() {
     <section
       id="why-hire-me"
       aria-labelledby="why-hire-me-title"
-      className="border-y border-[var(--border)] bg-white py-24 md:py-32"
+      className="border-y border-[var(--border)] bg-white section-padding"
     >
       <div className="container-main">
         {/* Section intro */}
         <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
           <Reveal delay={200}>
           <div className="max-w-3xl">
-            <span className="mono-label text-accent">
+            <p className="font-mono text-accent uppercase">
               Why businesses hire me
-            </span>
+            </p>
 
               <h2
                 id="why-hire-me-title"
