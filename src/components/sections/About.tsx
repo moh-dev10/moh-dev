@@ -10,11 +10,11 @@ import Image from "next/image";
                 {label:"Always learning ",desc:"Next.js, Node, PostgreSQL."},
             ]
             return (
-                <section id="about" className="py-20 md:py-28">
+                <section id="about" className="section-padding">
 
                     <div className="container-main flex flex-col gap-4 items-center">
 
-                      <span className="mono-label text-accent ">About</span>
+                      <p className="font-mono text-accent uppercase ">About</p>
 
                         <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-14 lg:gap-16">
                          

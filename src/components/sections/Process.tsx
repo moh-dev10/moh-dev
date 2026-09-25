@@ -147,8 +147,8 @@ export default function Process() {
     <section id="process" className="section-padding">
       <div className="container-main">
         {/* Header */}
-        <div className="max-w-2xl">
-          <p className="font-mono text-accent">MY PROCESS</p>
+        <div className="max-w-3xl">
+          <p className="font-mono text-accent ">MY PROCESS</p>
 
           <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight md:text-5xl">
             From idea to launch.

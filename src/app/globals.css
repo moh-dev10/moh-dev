@@ -137,6 +137,10 @@ a {
    UTILITY CLASSES
 ======================================== */
 
+.section-padding {
+  @apply py-20 md:py-24 lg:py-32;
+}
+
 .font-body {
   font-family: var(--font-body);
 }
