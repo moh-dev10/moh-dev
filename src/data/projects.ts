@@ -1,5 +1,6 @@
 
 export type Project = {
+  slug: string;
   title: string;
   category: string;
   year: string;
@@ -14,6 +15,7 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+  slug: "lumen-store",
   title: "Lumen Store",
   category: "eCommerce",
   year: "2026",
@@ -27,18 +29,20 @@ export const projects: Project[] = [
 },
 
   {
+  slug:"delivery-manager",
   title: "Delivery Manager",
   category: "Business System",
   year: "2026",
   description:
     "A custom WooCommerce system for managing orders, couriers, stock, returns, and delivery operations.",
   stack: ["WordPress", "WooCommerce", "PHP", "REST API"],
+  image: "/projects/Delivery-manager.webp",
   featuredPoint: "Courier integration with order, stock, and return workflows.",
-  image: "/projects/delivery-manager.webp",
   featured:false
 },
 
 {
+  slug:"data-science-portfolio",
   title: "Data Science Portfolio",
   category: "Portfolio",
   year: "2026",
@@ -51,6 +55,7 @@ export const projects: Project[] = [
 },
 
 {
+  slug:"wldelroudjishoes",
   title: "WldElroudjiShoes",
   category: "eCommerce",
   year: "2026",

@@ -20,6 +20,7 @@
 
   /* Tech accent */
   --accent: #2563eb;
+  --accent-rgb: 37 99 235;
   --accent-bright: #3b82f6;
   --accent-dark: #1d4ed8;
 
@@ -213,6 +214,21 @@ a {
   }
 }
 
+.decorative-hero {
+  background-image:
+    linear-gradient(
+      to right,
+      rgb(var(--accent-rgb) / 0.12) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgb(var(--accent-rgb) / 0.12) 1px,
+      transparent 1px
+    );
+
+  background-size: 36px 36px;
+}
 .decorative-grid {
   background-image:
     linear-gradient(

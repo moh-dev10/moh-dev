@@ -1,7 +1,8 @@
 import { projects } from "@/data/projects";
-import ProjectCard from "../ui/ProjectCard";
+import ProjectCard from "../../components/projects/ProjectCard";
 import { ArrowRight } from "lucide-react";
 import Reveal from "../ui/Reveal";
+import Link from "next/link";
 
 export default function Work() {
     const featuredProjects = projects.filter(
@@ -29,10 +30,16 @@ export default function Work() {
                             <p className="max-w-sm text-xs md:text-sm font-heading leading-4 md:leading-6  text-[var(--text-secondary)] ">
                                 No tutorial clones. Every project below solves a real business problem.
                             </p>
-                            <a href="/work" className="group flex items-center gap-2 text-xs md:text-sm font-semibold">
-                                View all work 
-                                <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1"/>
-                            </a>
+                            <Link
+                             href="/projects"
+                             className="group flex items-center gap-2 text-xs font-semibold md:text-sm"
+                           >
+                             View all work
+                             <ArrowRight
+                               size={14}
+                               className="transition-transform duration-200 group-hover:translate-x-1"
+                             />
+                           </Link>
                     </div>
                  </Reveal>
              </div>
@@ -40,13 +47,12 @@ export default function Work() {
              <div className="mt-14 space-y-8">
                 {featuredProjects.slice(0, 3).map((project,index) => (
                     <Reveal 
-                    key={project.title}
+                    key={project.slug}
                     delay={ index * 120}>
 
                         <ProjectCard 
                                      project={project} 
-                                     index={index}
-                                     total={3}/>
+                                     />
                     </Reveal>
                 ))}
              </div>

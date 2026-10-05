@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { ReactNode } from "react";
 import IntroLoader from "./IntroLoader";
+import Navbar from "../layout/Navbar";
 
 type PageShellProps = {
   children: ReactNode;
@@ -16,7 +17,9 @@ export default function PageShell({ children }: PageShellProps) {
       <IntroLoader onComplete={() => setIsLoaded(true)} />
 
       <div className={isLoaded ? "page-loaded" : "page-loading"}>
+        <Navbar/>
         {children}
+        
       </div>
     </>
   );
