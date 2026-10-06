@@ -5,6 +5,7 @@ import Hero from "@/components/sections/Hero";
 import Marquee from "@/components/sections/Marquee";
 import Process from "@/components/sections/Process";
 import Services from "@/components/sections/Services";
+import TechnicalStack from "@/components/sections/TechnicalStack";
 import WhyHireMe from "@/components/sections/WhyHireMe";
 import Work from "@/components/sections/Work";
 
@@ -21,6 +22,7 @@ export default function Home() {
        <Services/>
        <About/>
        <Process/>
+       <TechnicalStack/>
        <Contact/>
      </main>
     </>
