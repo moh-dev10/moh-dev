@@ -51,6 +51,7 @@ export const projects: Project[] = [
   stack: ["Next.js", "JavaScript", "Tailwind CSS", "Supabase"],
   featuredPoint: "Custom portfolio architecture built around projects and dynamic content.",
   image: "/projects/data-science-portfolio.webp",
+  liveUrl:"https://mehdimadi.vercel.app",
   featured:true,
 },
 

@@ -47,6 +47,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             group-hover:scale-105
           "
           sizes="(max-width: 768px) 100vw, 50vw"
+          loading="eager"
         />
       </div>
 

@@ -1,3 +1,6 @@
+
+import MotionLink from "../ui/MotionLink";
+
 export default function Contact() {
   return (
     <section id="contact" className="section-padding">
@@ -19,13 +22,12 @@ export default function Contact() {
             talk about what you&apos;re building.
           </p>
 
-          <a
-            href="mailto:mohamedhadou820@email.com"
-            className="mt-8 inline-flex items-center rounded-full bg-[var(--text-primary)] px-6 py-3 font-medium text-white! transition-transform duration-300 hover:-translate-y-1"
-          >
-            Start a conversation
-          </a>
-        </div>
+         <MotionLink
+           href="https://wa.me/213794298501?text=Hello%20Moh%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project."
+         >
+           Start a conversation
+         </MotionLink>        
+         </div>
 
         <div className="mt-20 grid gap-10 border-t border-[var(--border)] pt-8 sm:grid-cols-3">
           <div>
