@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -9,6 +10,8 @@ import LanguageSwitcher from "./LanguageSwitcher";
 export default function MobileMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t, isRTL } = useLanguage();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const links = [
     { title: t.nav.work, href: "#work" },
@@ -26,6 +29,20 @@ export default function MobileMenu() {
       document.body.style.overflow = "";
     };
   }, [isMenuOpen]);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setIsMenuOpen(false);
+    if (pathname === "/") {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      e.preventDefault();
+      router.push(`/${href}`);
+    }
+  };
 
   const ArrowIcon = isRTL ? ArrowLeft : ArrowRight;
 
@@ -115,7 +132,7 @@ export default function MobileMenu() {
                     whileTap={{ x: isRTL ? -3 : 3 }}
                     transition={{ duration: 0.2, ease: "easeOut" }}
                     href={link.href}
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="flex items-center justify-between font-heading text-2xl font-extrabold"
                   >
                     <span>{link.title}</span>
@@ -128,7 +145,7 @@ export default function MobileMenu() {
 
               <motion.a
                 href="#contact"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={(e) => handleNavClick(e, "#contact")}
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.97, y: 0 }}
                 transition={{
@@ -140,7 +157,7 @@ export default function MobileMenu() {
                 <span>{t.nav.mobileCta}</span>
                 <ArrowIcon
                   size={16}
-                  className="transition-transform duration-300 group-hover:translate-x-1"
+                  className="transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
                 />
               </motion.a>
             </div>

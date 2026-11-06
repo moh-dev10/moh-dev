@@ -76,6 +76,7 @@ html[dir="rtl"] h6 {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {

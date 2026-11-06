@@ -1,13 +1,29 @@
 "use client";
 
 import { ArrowRight, ArrowLeft } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
 import ServiceCard from "../ui/ServiceCard";
 import Reveal from "../ui/Reveal";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Services() {
   const { t, services, isRTL } = useLanguage();
+  const router = useRouter();
+  const pathname = usePathname();
   const ArrowForward = isRTL ? ArrowLeft : ArrowRight;
+
+  const handlePricingClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const target = document.querySelector("#contact");
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      e.preventDefault();
+      router.push("/#contact");
+    }
+  };
 
   return (
     <section id="services" className="section-padding">
@@ -29,6 +45,7 @@ export default function Services() {
 
             <a
               href="#contact"
+              onClick={handlePricingClick}
               className="mt-4 group max-w-fit flex items-center gap-2 font-semibold px-4 py-2.5 border border-[var(--border)] rounded-full hover:!text-white hover:!bg-black transition-all duration-200 text-xs md:text-sm"
             >
               <span>{t.services.detailedPricing}</span>

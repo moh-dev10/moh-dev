@@ -27,8 +27,8 @@ export const services: Service[] = [
     tagline: "Look credible and get contacted more.",
     description:
       "Fast, responsive websites for businesses that need a clear online presence and a direct path to inquiries.",
-    duration: "1–2 weeks",
-    startingPrice: "from 50,000 DZD",
+    duration: "3–5 days",
+    startingPrice: "from 35,000 DZD",
     icon: MonitorSmartphone,
   },
   {
@@ -37,8 +37,8 @@ export const services: Service[] = [
     tagline: "Sell online, including cash on delivery.",
     description:
       "Mobile-first stores with product catalogs, checkout, delivery flows, and the tools needed to manage orders.",
-    duration: "2–4 weeks",
-    startingPrice: "from 120,000 DZD",
+    duration: "1–2 weeks",
+    startingPrice: "from 75,000 DZD",
     icon: ShoppingCart,
   },
   {
@@ -47,8 +47,8 @@ export const services: Service[] = [
     tagline: "A store you can manage yourself.",
     description:
       "Custom WordPress and WooCommerce solutions, from tailored themes and checkout flows to business-specific functionality.",
-    duration: "1–3 weeks",
-    startingPrice: "from 60,000 DZD",
+    duration: "4–7 days",
+    startingPrice: "from 45,000 DZD",
     icon: Store,
   },
   {
@@ -57,7 +57,7 @@ export const services: Service[] = [
     tagline: "Interactive tools, dashboards, booking flows.",
     description:
       "When WordPress isn't enough: fast React and Next.js interfaces with real application logic.",
-    duration: "2–5 weeks",
+    duration: "1–3 weeks",
     startingPrice: "On quote",
     icon: PanelsTopLeft,
   },
@@ -67,7 +67,7 @@ export const services: Service[] = [
     tagline: "Frontend + backend + database, end-to-end.",
     description:
       "Node.js APIs, PostgreSQL, authentication, admin panels, and complete web application architecture.",
-    duration: "3–6+ weeks",
+    duration: "2–4 weeks",
     startingPrice: "On quote",
     icon: ServerCog,
   },
@@ -77,7 +77,7 @@ export const services: Service[] = [
     tagline: "Faster site, fewer headaches.",
     description:
       "Performance improvements, mobile fixes, SEO basics, updates, backups, and ongoing maintenance.",
-    duration: "2–5 days",
+    duration: "1–2 days",
     startingPrice: "from 10,000 DZD",
     icon: Gauge,
   },

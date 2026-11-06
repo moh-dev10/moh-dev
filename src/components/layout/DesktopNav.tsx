@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 
 const linkVariants = {
@@ -23,6 +24,8 @@ const underlineVariants = {
 
 export default function DesktopNav() {
   const { t, isRTL } = useLanguage();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const links = [
     { title: t.nav.work, href: "#work" },
@@ -33,12 +36,26 @@ export default function DesktopNav() {
     { title: t.nav.contact, href: "#contact" },
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      e.preventDefault();
+      router.push(`/${href}`);
+    }
+  };
+
   return (
     <nav aria-label="Main Navigation" className="hidden items-center gap-7 md:flex">
       {links.map((link) => (
         <motion.a
           key={link.href}
           href={link.href}
+          onClick={(e) => handleNavClick(e, link.href)}
           initial="rest"
           whileHover="hover"
           variants={linkVariants}

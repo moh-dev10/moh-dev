@@ -1,16 +1,34 @@
 "use client";
 
 import { ArrowRight, ArrowLeft, ArrowUpRight, ArrowUpLeft } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation";
 import HeroVisual from "./HeroVisual";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Hero() {
   const { t, isRTL } = useLanguage();
+  const router = useRouter();
+  const pathname = usePathname();
+
   const ArrowForward = isRTL ? ArrowLeft : ArrowRight;
   const ArrowCorner = isRTL ? ArrowUpLeft : ArrowUpRight;
 
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const target = document.querySelector(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      e.preventDefault();
+      router.push(`/${targetId}`);
+    }
+  };
+
   return (
     <section
+      id="hero"
       aria-labelledby="hero-title"
       className="tech-grid relative overflow-hidden min-h-screen pt-16"
     >
@@ -61,6 +79,7 @@ export default function Hero() {
           <div className="hero-enter hero-enter-delay-4 mt-10 flex flex-wrap gap-3">
             <a
               href="#contact"
+              onClick={(e) => handleScrollTo(e, "#contact")}
               className="group inline-flex items-center gap-2 rounded-md bg-[var(--accent)] px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.08em] !text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-[var(--accent-dark)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
             >
               <span>{t.hero.ctaPrimary}</span>
@@ -74,6 +93,7 @@ export default function Hero() {
 
             <a
               href="#work"
+              onClick={(e) => handleScrollTo(e, "#work")}
               className="group inline-flex items-center gap-2 rounded-md border border-[var(--border-strong)] bg-white/50 px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.08em] text-[var(--foreground)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[var(--accent)] hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]"
             >
               <span>{t.hero.ctaSecondary}</span>
