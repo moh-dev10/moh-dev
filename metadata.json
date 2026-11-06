@@ -1,0 +1,8 @@
+{
+  "name": "Moh Dev Portfolio",
+  "description": "Portfolio of Moh Dev — Full-Stack Web Developer building modern websites, eCommerce platforms, and custom web applications.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

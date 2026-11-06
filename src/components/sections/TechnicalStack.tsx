@@ -1,7 +1,11 @@
-import { skillGroups } from "@/data/stack";
+"use client";
+
 import Reveal from "../ui/Reveal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function TechnicalStack() {
+  const { t, skillGroups } = useLanguage();
+
   return (
     <section id="stack" className="section-padding">
       <div className="container-main">
@@ -9,20 +13,19 @@ export default function TechnicalStack() {
         <Reveal>
           <div className="max-w-3xl">
             <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-accent">
-              Technical Skills
+              {t.stack.eyebrow}
             </p>
 
             <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              Tools I use to
+              {t.stack.titleLine1}
               <br />
               <span className="font-serif font-normal italic">
-                build things.
+                {t.stack.titleHighlight}
               </span>
             </h2>
 
             <p className="mt-6 max-w-2xl text-base leading-7 text-[var(--text-secondary)]">
-              A practical stack built around modern web development, full-stack
-              applications, and eCommerce.
+              {t.stack.leadText}
             </p>
           </div>
         </Reveal>

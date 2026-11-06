@@ -3,43 +3,11 @@
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
 import Reveal from "../ui/Reveal";
-
-const processSteps = [
-  {
-    number: "01",
-    title: "Discover",
-    description:
-      "Understand the business, goals, audience, and requirements before writing a line of code.",
-  },
-  {
-    number: "02",
-    title: "Plan",
-    description:
-      "Define the structure, features, user flow, and technical approach for the project.",
-  },
-  {
-    number: "03",
-    title: "Build",
-    description:
-      "Design and develop the website or application with clean, scalable, and maintainable code.",
-  },
-  {
-    number: "04",
-    title: "Refine",
-    description:
-      "Test, optimize, and polish the experience across different devices and interactions.",
-  },
-  {
-    number: "05",
-    title: "Launch",
-    description:
-      "Deploy the project, make sure everything is ready, and prepare it for real users.",
-  },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Process() {
+  const { t, isRTL, language } = useLanguage();
   const timelineRef = useRef<HTMLDivElement>(null);
   const progressLineRef = useRef<HTMLDivElement>(null);
   const nodesRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -76,10 +44,7 @@ export default function Process() {
 
       updateTrackPosition();
 
-      // --------------------------------------------------
-      // Progress line
-      // --------------------------------------------------
-
+      // Progress line animation
       gsap.fromTo(
         progressLine,
         {
@@ -98,10 +63,7 @@ export default function Process() {
         }
       );
 
-      // --------------------------------------------------
       // Node activation
-      // --------------------------------------------------
-
       nodes.forEach((node) => {
         ScrollTrigger.create({
           trigger: node,
@@ -127,7 +89,6 @@ export default function Process() {
         });
       });
 
-      // Recalculate the line when the viewport changes
       const handleResize = () => {
         updateTrackPosition();
         ScrollTrigger.refresh();
@@ -141,22 +102,23 @@ export default function Process() {
     }, timelineRef);
 
     return () => ctx.revert();
-  }, []);
+  }, [language]);
 
   return (
     <section id="process" className="section-padding">
       <div className="container-main">
         {/* Header */}
         <div className="max-w-3xl">
-          <p className="font-mono text-accent ">MY PROCESS</p>
+          <p className="font-mono text-accent uppercase text-xs tracking-wider">
+            {t.process.eyebrow}
+          </p>
 
           <h2 className="mt-4 font-heading text-4xl font-bold tracking-tight md:text-5xl">
-            From idea to launch.
+            {t.process.title}
           </h2>
 
           <p className="mt-5 text-base leading-relaxed text-[var(--text-secondary)] md:text-lg">
-            A clear and structured process to turn your idea into a reliable,
-            polished digital product.
+            {t.process.subtitle}
           </p>
         </div>
 
@@ -164,14 +126,14 @@ export default function Process() {
         <div ref={timelineRef} className="relative mt-16">
           {/* Base timeline */}
           <div
-            className="
+            className={`
               absolute
-              left-[15px]
               w-px
               bg-[var(--border)]
               md:left-1/2
               md:-translate-x-1/2
-            "
+              ${isRTL ? "right-[15px] left-auto" : "left-[15px] right-auto"}
+            `}
             style={{
               top: 0,
               bottom: 0,
@@ -181,19 +143,19 @@ export default function Process() {
           {/* Animated progress */}
           <div
             ref={progressLineRef}
-            className="
+            className={`
               absolute
-              left-[15px]
               w-px
               origin-top
               bg-accent
               md:left-1/2
               md:-translate-x-1/2
-            "
+              ${isRTL ? "right-[15px] left-auto" : "left-[15px] right-auto"}
+            `}
           />
 
           {/* Steps */}
-          {processSteps.map((step, index) => {
+          {t.process.steps.map((step, index) => {
             const isEven = index % 2 === 0;
 
             return (
@@ -220,9 +182,8 @@ export default function Process() {
                   ref={(element) => {
                     nodesRef.current[index] = element;
                   }}
-                  className="
+                  className={`
                     absolute
-                    left-[11px]
                     top-1/2
                     z-10
                     h-2.5
@@ -230,23 +191,27 @@ export default function Process() {
                     -translate-y-1/2
                     rounded-full
                     bg-accent
-
                     md:left-1/2
                     md:h-3
                     md:w-3
                     md:-translate-x-1/2
-                  "
+                    ${isRTL ? "right-[11px] left-auto" : "left-[11px] right-auto"}
+                  `}
                 />
 
                 {/* Content */}
                 <div
                   className={`relative z-20 col-start-2 flex flex-col ${
                     isEven
-                      ? "md:col-start-2 md:items-start md:pl-16"
-                      : "md:col-start-1 md:items-end md:pr-16"
+                      ? isRTL
+                        ? "md:col-start-2 md:items-start md:pr-16 md:pl-0"
+                        : "md:col-start-2 md:items-start md:pl-16 md:pr-0"
+                      : isRTL
+                        ? "md:col-start-1 md:items-end md:pl-16 md:pr-0"
+                        : "md:col-start-1 md:items-end md:pr-16 md:pl-0"
                   }`}
                 >
-                  <Reveal direction={isEven ? "right" : "left"}>
+                  <Reveal direction={isEven ? (isRTL ? "left" : "right") : (isRTL ? "right" : "left")}>
                     <span className="font-mono text-xs text-[var(--text-secondary)] md:text-sm">
                       {String(index + 1).padStart(2, "0")}
                     </span>

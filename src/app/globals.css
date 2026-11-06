@@ -34,6 +34,37 @@
   --font-serif: var(--font-instrument-serif);
 }
 
+/* ========================================
+   RTL & ARABIC TYPOGRAPHY
+======================================== */
+
+html[dir="rtl"],
+[dir="rtl"] {
+  --font-body: var(--font-cairo), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-heading: var(--font-cairo), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+html[dir="rtl"] .font-serif,
+[dir="rtl"] .font-serif {
+  font-family: var(--font-cairo), system-ui, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
+
+html[dir="rtl"] .font-mono,
+[dir="rtl"] .font-mono {
+  font-family: var(--font-jetbrains-mono), var(--font-cairo), monospace;
+}
+
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6 {
+  letter-spacing: -0.015em;
+}
+
 
 /* ========================================
    RESET
@@ -306,6 +337,10 @@ a {
   animation-play-state: paused;
 }
 
+html[dir="rtl"] .marquee-track {
+  animation: marquee-rtl 25s linear infinite;
+}
+
 @keyframes marquee {
   from {
     transform: translateX(0);
@@ -313,6 +348,16 @@ a {
 
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-rtl {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(50%);
   }
 }
 

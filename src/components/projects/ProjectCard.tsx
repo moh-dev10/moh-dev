@@ -1,13 +1,18 @@
-import Image from "next/image";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+"use client";
 
-import type { Project } from "@/data/projects";
+import Image from "next/image";
+import { ArrowUpRight, ArrowUpLeft, ExternalLink } from "lucide-react";
+import type { ProjectTranslation } from "@/data/translations";
+import { useLanguage } from "@/context/LanguageContext";
 
 type ProjectCardProps = {
-  project: Project;
+  project: ProjectTranslation;
 };
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const { t, isRTL } = useLanguage();
+  const ArrowCorner = isRTL ? ArrowUpLeft : ArrowUpRight;
+
   return (
     <article
       className="
@@ -28,13 +33,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           rounded-t-lg bg-[var(--surface-muted)]
 
           md:min-h-full
-          md:rounded-l-lg
+          md:rounded-s-lg
+          md:rounded-e-none
           md:rounded-t-none
 
           [.project-grid_&]:min-h-[220px]
           [.project-grid_&]:rounded-t-lg
-          [.project-grid_&]:rounded-l-none
-          [.project-grid_&]:rounded-b-none
+          [.project-grid_&]:rounded-s-none
+          [.project-grid_&]:rounded-e-none
         "
       >
         <Image
@@ -60,7 +66,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       >
         {/* Category + year */}
         <div className="flex items-center justify-between gap-4">
-          <span className="mono-label text-accent">
+          <span className="mono-label text-accent font-semibold">
             {project.category}
           </span>
 
@@ -75,12 +81,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </h3>
 
         {/* Description */}
-        <p className="mt-5 max-w-xl text-sm leading-7 text-[var(--text-secondary)] md:text-base">
+        <p className="mt-4 max-w-xl text-sm leading-7 text-[var(--text-secondary)] md:text-base">
           {project.description}
         </p>
 
         {/* Tech stack */}
-        <div className="mt-7 flex flex-wrap gap-2">
+        <div className="mt-6 flex flex-wrap gap-2">
           {project.stack.map((technology) => (
             <span
               key={technology}
@@ -97,13 +103,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
 
-        {/* Featured point */}
-        <div className="mt-8 border-l-2 border-[var(--accent)] pl-4">
+        {/* Featured point with logical border */}
+        <div className="mt-8 border-s-2 border-[var(--accent)] ps-4">
           <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--text-muted)]">
-            Key feature
+            {t.work.keyFeature}
           </span>
 
-          <p className="mt-2 text-sm leading-6 text-[var(--foreground)]">
+          <p className="mt-1.5 text-sm leading-6 text-[var(--foreground)]">
             {project.featuredPoint}
           </p>
         </div>
@@ -121,21 +127,22 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 font-mono text-[10px] uppercase tracking-wider
                 text-[var(--foreground)]
                 transition-all duration-200
-                hover:-translate-y-0.5 hover:bg-[var(--accent)]
+                hover:-translate-y-0.5 hover:bg-[var(--accent)] hover:!text-white
                 focus-visible:outline-2
                 focus-visible:outline-offset-4
                 focus-visible:outline-[var(--accent)]
               "
             >
-              Case study
+              <span>{t.work.caseStudy}</span>
 
-              <ArrowUpRight
+              <ArrowCorner
                 aria-hidden="true"
                 size={14}
                 className="
                   transition-transform duration-200
                   group-hover/link:-translate-y-0.5
                   group-hover/link:translate-x-0.5
+                  rtl:group-hover/link:-translate-x-0.5
                 "
               />
             </a>
@@ -157,7 +164,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 hover:bg-[var(--accent)]
               "
             >
-              Live demo
+              <span>{t.work.liveDemo}</span>
 
               <ExternalLink
                 aria-hidden="true"
@@ -165,6 +172,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 className="
                   text-white transition-transform duration-200
                   group-hover/link:translate-x-0.5
+                  rtl:group-hover/link:-translate-x-0.5
                 "
               />
             </a>

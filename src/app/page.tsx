@@ -1,4 +1,3 @@
-import Navbar from "@/components/layout/Navbar";
 import About from "@/components/sections/About";
 import Contact from "@/components/sections/Contact";
 import Hero from "@/components/sections/Hero";
@@ -11,10 +10,7 @@ import Work from "@/components/sections/Work";
 
 export default function Home() {
   return (
-    
-    <>
-    <Navbar/>
-     <main>
+    <main>
        <Hero/>
        <Marquee/>
        <WhyHireMe/> 
@@ -25,6 +21,5 @@ export default function Home() {
        <TechnicalStack/>
        <Contact/>
      </main>
-    </>
   );
 }

@@ -1,12 +1,31 @@
-import type { Service } from "@/data/services";
+"use client";
+
+import type { ServiceTranslation } from "@/data/translations";
+import {
+  MonitorSmartphone,
+  ShoppingCart,
+  Store,
+  PanelsTopLeft,
+  ServerCog,
+  Gauge,
+} from "lucide-react";
+
+const serviceIcons: Record<string, typeof MonitorSmartphone> = {
+  "business-websites": MonitorSmartphone,
+  "ecommerce-websites": ShoppingCart,
+  "wordpress-woocommerce": Store,
+  "custom-react-applications": PanelsTopLeft,
+  "full-stack-web-apps": ServerCog,
+  "optimization-maintenance": Gauge,
+};
 
 type ServiceCardProps = {
-  service: Service;
+  service: ServiceTranslation;
   index: number;
 };
 
-export default function ServiceCard({ service , index }: ServiceCardProps) {
-  const Icon = service.icon;
+export default function ServiceCard({ service, index }: ServiceCardProps) {
+  const Icon = serviceIcons[service.slug] || MonitorSmartphone;
 
   return (
     <article className="group flex min-h-[220px] flex-col rounded-2xl border border-[var(--border)] bg-[var(--surface)] p-5 transition-colors duration-300 hover:bg-black md:p-6">
@@ -45,7 +64,7 @@ export default function ServiceCard({ service , index }: ServiceCardProps) {
               {service.duration}
             </p>
 
-            <p className="text-sm font-semibold transition-colors duration-300 group-hover:text-white">
+            <p className="text-sm font-semibold transition-colors duration-300 group-hover:text-white font-mono">
               {service.startingPrice}
             </p>
           </div>

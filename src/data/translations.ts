@@ -1,0 +1,630 @@
+export type Language = "en" | "ar";
+
+export interface ProjectTranslation {
+  slug: string;
+  title: string;
+  category: string;
+  year: string;
+  description: string;
+  stack: string[];
+  featuredPoint: string;
+  image: string;
+  caseStudyUrl?: string;
+  liveUrl?: string;
+  featured?: boolean;
+}
+
+export interface ServiceTranslation {
+  slug: string;
+  title: string;
+  tagline: string;
+  description: string;
+  duration: string;
+  startingPrice: string;
+}
+
+export interface SkillGroupTranslation {
+  title: string;
+  description: string;
+  skills: string[];
+}
+
+export const translations = {
+  en: {
+    nav: {
+      work: "Work",
+      services: "Services",
+      about: "About",
+      process: "Process",
+      stack: "Stack",
+      contact: "Contact",
+      cta: "Let's work together →",
+      mobileCta: "Let's work together",
+    },
+    hero: {
+      availableBadge: "Available for new projects",
+      roleBadge: "Full-Stack Developer — DZ / Remote",
+      titlePrefix: "I build websites that turn visitors into",
+      titleHighlight: "customers",
+      description: "I'm Mohamed — a Full-Stack Web Developer building modern websites, eCommerce platforms, and custom web solutions with a focus on clean architecture, maintainable code, and real business needs.",
+      ctaPrimary: "Let's work together",
+      ctaSecondary: "View my work",
+      repliesTime: "Replies within 24h",
+      languages: "FR · AR · EN",
+      stats: [
+        { label: "Projects completed", value: "8+" },
+        { label: "Service tracks", value: "6" },
+        { label: "Max response", value: "24h" },
+      ],
+      visual: {
+        online: "Online",
+        location: "Algeria · Remote",
+        codeFocus: '"business results"',
+        codeArch: '"maintainable"',
+        codePerf: '"optimized"',
+        buildReady: "Production build ready",
+        more: "+ more",
+        conversionTitle: "Conversion-first",
+        conversionSub: "design & code",
+        engineeringTitle: "Engineering",
+        scaleTitle: "Built to scale",
+      },
+    },
+    whyHireMe: {
+      eyebrow: "Why businesses hire me",
+      titleLine1: "Not just a website.",
+      titleLine2: "A tool built to",
+      titleHighlight: "bring business.",
+      leadText: "Good-looking websites aren't enough. I build with one question:",
+      leadQuestion: "will this help you get contacted, booked, or paid?",
+      subText: "Speed, clarity, strong CTAs, WhatsApp, checkout, and SEO — built around your business.",
+      reasons: [
+        {
+          title: "Built to convert",
+          description: "Clear offers, strong CTAs, and contact options placed where customers are ready to act.",
+        },
+        {
+          title: "Fast on real phones",
+          description: "Optimized for mobile users, including 4G connections and lower-end devices.",
+        },
+        {
+          title: "Easy to manage",
+          description: "WordPress/WooCommerce or clean custom code — structured so the business can maintain and extend it.",
+        },
+        {
+          title: "Direct & honest",
+          description: "You talk directly to the person building your project. Clear scope, realistic timelines, and no unnecessary jargon.",
+        },
+      ],
+    },
+    work: {
+      eyebrow: "Work",
+      titleLine1: "Real projects.",
+      titleHighlight: "Real business value.",
+      leadText: "No tutorial clones. Every project below solves a real business problem.",
+      viewAll: "View all work",
+      caseStudy: "Case study",
+      liveDemo: "Live demo",
+      keyFeature: "Key feature",
+    },
+    services: {
+      eyebrow: "Services",
+      titleLine1: "What I can build",
+      titleHighlight: "for your business.",
+      detailedPricing: "Detailed Pricing",
+    },
+    about: {
+      eyebrow: "About",
+      titleLine1: "A developer with a",
+      titleHighlight: "business mindset.",
+      p1: "I'm Mohamed, a young Full-Stack Web Developer based in Algeria. I'm actively growing toward full-stack engineering — while already shipping real websites and stores for real clients.",
+      p2: "My focus isn't just writing code. It's understanding your customers, your sales process, and building a website that actually helps: more inquiries, easier ordering, stronger credibility.",
+      principles: [
+        { label: "Business-oriented", desc: "Every feature tied to ROI." },
+        { label: "UI/UX care", desc: "Clean, premium interfaces." },
+        { label: "Clean, maintainable code", desc: "Built to scale & handover." },
+        { label: "Always learning", desc: "Next.js, Node, PostgreSQL." },
+      ],
+    },
+    process: {
+      eyebrow: "MY PROCESS",
+      title: "From idea to launch.",
+      subtitle: "A clear and structured process to turn your idea into a reliable, polished digital product.",
+      steps: [
+        {
+          number: "01",
+          title: "Discover",
+          description: "Understand the business, goals, audience, and requirements before writing a line of code.",
+        },
+        {
+          number: "02",
+          title: "Plan",
+          description: "Define the structure, features, user flow, and technical approach for the project.",
+        },
+        {
+          number: "03",
+          title: "Build",
+          description: "Design and develop the website or application with clean, scalable, and maintainable code.",
+        },
+        {
+          number: "04",
+          title: "Refine",
+          description: "Test, optimize, and polish the experience across different devices and interactions.",
+        },
+        {
+          number: "05",
+          title: "Launch",
+          description: "Deploy the project, make sure everything is ready, and prepare it for real users.",
+        },
+      ],
+    },
+    stack: {
+      eyebrow: "Technical Skills",
+      titleLine1: "Tools I use to",
+      titleHighlight: "build things.",
+      leadText: "A practical stack built around modern web development, full-stack applications, and eCommerce.",
+    },
+    contact: {
+      eyebrow: "GET IN TOUCH",
+      titleLine1: "Have a project in mind?",
+      titleHighlight: "Let's build it.",
+      leadText: "Whether you need a modern website, eCommerce platform, custom WordPress solution, or web application, let's talk about what you're building.",
+      whatsappCta: "Start a conversation",
+      whatsappUrl: "https://wa.me/213794298501?text=Hello%20Moh%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project.",
+      emailLabel: "EMAIL",
+      locationLabel: "BASED IN",
+      locationValue: "Algeria · Available remotely",
+      socialLabel: "SOCIAL",
+    },
+    projectsPage: {
+      eyebrow: "Projects",
+      titleLine1: "Projects that",
+      titleHighlight: "shipped",
+      titleSuffix: "& sell",
+      leadText: "A collection of websites, eCommerce stores, and web applications built to solve real business and product problems.",
+      countSuffix: "Projects",
+      ctaEyebrow: "Have a project in mind?",
+      ctaTitleLine1: "Let's build something",
+      ctaTitleHighlight: "that matters.",
+      ctaButton: "Start a conversation",
+    },
+  },
+  ar: {
+    nav: {
+      work: "الأعمال",
+      services: "الخدمات",
+      about: "من أنا",
+      process: "منهجيتي",
+      stack: "المهارات",
+      contact: "تواصل معي",
+      cta: "لنبدأ مشروعك معاً ←",
+      mobileCta: "لنبدأ مشروعك معاً",
+    },
+    hero: {
+      availableBadge: "متاح للمشاريع والطلبات الجديدة",
+      roleBadge: "مطور ويب شامل (Full-Stack) — الجزائر / عن بُعد",
+      titlePrefix: "أبني مواقع إلكترونية تحوّل الزوار إلى",
+      titleHighlight: "عملاء فعليين",
+      description: "أنا محمد — مطور ويب Full-Stack، أطور مواقع عصرية، متاجر إلكترونية وحلولاً رقمية مخصصة تركز على الكود النظيف، السرعة الفائقة، وتحقيق نتائج تجارية حقيقية ترفع مبيعاتك.",
+      ctaPrimary: "لنبدأ العمل معاً",
+      ctaSecondary: "تصفح أعمالي",
+      repliesTime: "الرد خلال 24 ساعة",
+      languages: "عربية · فرنسية · إنجليزية",
+      stats: [
+        { label: "مشاريع منجزة بنجاح", value: "+8" },
+        { label: "مسارات خدمات تقنية", value: "6" },
+        { label: "أقصى وقت للاستجابة", value: "24 س" },
+      ],
+      visual: {
+        online: "متصل الآن",
+        location: "الجزائر · متاح عن بُعد",
+        codeFocus: '"نتائج تجارية"',
+        codeArch: '"قابلة للتوسع"',
+        codePerf: '"فائقة السرعة"',
+        buildReady: "بيئة الإنتاج جاهزة ومستقرة",
+        more: "+ المزيد",
+        conversionTitle: "تصميم مخصص للتحويل",
+        conversionSub: "كود وتجربة بيع فعالة",
+        engineeringTitle: "هندسة برمجية",
+        scaleTitle: "بنية مهيأة للنمو",
+      },
+    },
+    whyHireMe: {
+      eyebrow: "لماذا يختارني أصحاب الأعمال؟",
+      titleLine1: "ليس مجرد موقع للعرض.",
+      titleLine2: "بل أداة تقنية مبنية لـ",
+      titleHighlight: "جلب المبيعات والعملاء.",
+      leadText: "الموقع الجميل وحده لا يكفي. أبني كل صفحة واضعاً في الحسبان سؤالاً جوهرياً:",
+      leadQuestion: "هل سيساعدك هذا الموقع في استقبال اتصالات، حجوزات، أو مبيعات حقيقية؟",
+      subText: "سرعة تحميل خارقة، وضوح تام في العروض، ربط مباشر بواتساب، تدفق طلبات بضغطة زر، وتهيئة لمحركات البحث (SEO) — ملائمة تماماً لطبيعة السوق.",
+      reasons: [
+        {
+          title: "مصمم لتحقيق أعلى نسبة تحويل (Conversion)",
+          description: "عروض بيع واضحة، أزرار دعوة للشراء في مواضعها الصحيحة، وتجربة سلسة تدفع الزبون لاتخاذ القرار مباشرة.",
+        },
+        {
+          title: "فائق السرعة على هواتف زبائنك",
+          description: "مهيأ بدقة للهواتف المحمولة حتى مع شبكات 4G المتوسطة والأجهزة البسيطة لضمان عدم هروب أي زبون.",
+        },
+        {
+          title: "لوحة تحكم سهلة ومرنة للإدارة",
+          description: "حلول WooCommerce أو كود برمجي مخصص يتيح لك ولفريقك التحكم الكامل بالمنتجات والطلبات والأسعار دون الحاجة لمعرفة تقنية.",
+        },
+        {
+          title: "تواصل مباشر وصريح بدون وسطاء",
+          description: "أنت تتحدث مباشرة مع المطور الذي يبرمج مشروعك. نطاق عمل واضح، التزام تام بالمواعيد، وبدون مصطلحات تقنية معقدة.",
+        },
+      ],
+    },
+    work: {
+      eyebrow: "أبرز الأعمال",
+      titleLine1: "مشاريع حقيقية.",
+      titleHighlight: "قيمة تجارية ملموسة.",
+      leadText: "ليست قوالب تجريبية أو محاكاة دروس. كل مشروع تم بناؤه لحل مشكلة عمل حقيقية وتسهيل البيع للعميل.",
+      viewAll: "عرض جميع المشاريع",
+      caseStudy: "دراسة الحالة",
+      liveDemo: "معاينة حية للموقع",
+      keyFeature: "الميزة المحورية",
+    },
+    services: {
+      eyebrow: "الخدمات التقنية",
+      titleLine1: "ما الذي يمكنني بناؤه",
+      titleHighlight: "لتطوير وتوسيع مشروعك.",
+      detailedPricing: "تفاصيل الأسعار",
+    },
+    about: {
+      eyebrow: "نبذة عني",
+      titleLine1: "مطور برمجيات يمتلك",
+      titleHighlight: "عقلية ورؤية تجارية.",
+      p1: "أنا محمد، مطور ويب Full-Stack طموح ومقيم في الجزائر. أواصل باستمرار تعزيز كفاءتي في هندسة الـ Full-Stack والأنظمة المتكاملة — بينما أسلّم بالفعل مواقع ومتاجر رقمية فعالة لأصحاب أعمال حقيقيين.",
+      p2: "هدفي ليس مجرد كتابة أسطر من الكود، بل فهم طبيعة زبائنك، مسار مبيعاتك، وبناء منصة تقدم قيمة ملموسة لنمو نشاطك التجاري: مزيد من الاتصالات، طلبات أسهل، ومصداقية أقوى.",
+      principles: [
+        { label: "رؤية تجارية هادفة", desc: "كل ميزة برمجية ترتبط بعائد استثماري واضح." },
+        { label: "عناية فائقة بتجربة الـ UI/UX", desc: "واجهات نظيفة، عصرية، ومريحة للمستخدم." },
+        { label: "كود نظيف وقابل للصيانة", desc: "بنية قوية قابلة للتوسع والتسليم السلس." },
+        { label: "تطوير مستمر للأدوات", desc: "Next.js، Node.js، وقواعد بيانات PostgreSQL." },
+      ],
+    },
+    process: {
+      eyebrow: "منهجية العمل",
+      title: "من الفكرة المبدئية إلى الإطلاق الرسمي.",
+      subtitle: "منهجية واضحة ومنظمة لتحويل فكرة مشروعك إلى منتج رقمي موثوق، سريع، ومتقن التفاصيل.",
+      steps: [
+        {
+          number: "01",
+          title: "الاستكشاف والتحليل",
+          description: "فهم طبيعة عملك التجاري، أهدافك، جمهورك المستهدف، وتحديد المتطلبات بدقة قبل كتابة أي كود.",
+        },
+        {
+          number: "02",
+          title: "التخطيط والهيكلة",
+          description: "رسم هيكل الموقع، ميزات المنصة، مسار تجربة المستخدم، والحلول التقنية الأنسب لنجاح المشروع.",
+        },
+        {
+          number: "03",
+          title: "البناء والبرمجة",
+          description: "تصميم وتطوير الموقع أو التطبيق بكود نظيف، قابل للتوسع، ومتوافق مع المعايير الحديثة.",
+        },
+        {
+          number: "04",
+          title: "التحسين والاختبار",
+          description: "فحص الأداء بدقة، اختبار سرعة الاستجابة على مختلف الهواتف والشاشات، وضبط كافة التفاعلات.",
+        },
+        {
+          number: "05",
+          title: "الإطلاق والتسليم",
+          description: "رفع الموقع على الاستضافة، التأكد من جاهزية كل التدفقات البرمجية، وتسليمه لبدء استقبال الطلبات.",
+        },
+      ],
+    },
+    stack: {
+      eyebrow: "المهارات والتقنيات",
+      titleLine1: "الأدوات والتقنيات التي",
+      titleHighlight: "أعتمد عليها في البناء.",
+      leadText: "ترسانة تقنية عملية مواكبة لأحدث معايير تطوير الويب الحديث، التطبيقات المتكاملة، ومتاجر التجارة الإلكترونية.",
+    },
+    contact: {
+      eyebrow: "تواصل معي",
+      titleLine1: "هل لديك فكرة مشروع ترغب بتنفيذها؟",
+      titleHighlight: "دعنا نبنيه باحترافية.",
+      leadText: "سواء كنت تحتاج موقعاً مؤسساتياً راقياً، متجراً إلكترونياً يدعم الدفع عند الاستلام، حلاً مخصصاً على WordPress، أو تطبيق ويب متكامل — دعنا نتحدث حول ما تبنيه.",
+      whatsappCta: "ابدأ المحادثة عبر واتساب",
+      whatsappUrl: "https://wa.me/213794298501?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%20%D9%85%D8%AD%D9%85%D8%AF%D8%8C%20%D8%A7%D8%B7%D9%84%D8%B9%D8%AA%20%D8%B9%D9%84%D9%89%20%D9%85%D8%B9%D8%B1%D8%B6%20%D8%A3%D8%B9%D9%85%D8%A7%D9%84%D9%83%20%D9%88%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D9%86%D8%A7%D9%82%D8%B4%D8%A9%20%D9%85%D8%B4%D8%B1%D9%88%D8%B9%20%D8%AC%D8%AF%D9%8A%D8%AF.",
+      emailLabel: "البريد الإلكتروني",
+      locationLabel: "المقر الجغرافي",
+      locationValue: "الجزائر · متاح للعمل عن بُعد محلياً ودولياً",
+      socialLabel: "شبكات التواصل",
+    },
+    projectsPage: {
+      eyebrow: "المشاريع المنجزة",
+      titleLine1: "مشاريع تم إطلاقها",
+      titleHighlight: "وتحقق مبيعات",
+      titleSuffix: "ونتائج",
+      leadText: "مجموعة من المواقع، المتاجر الإلكترونية، وتطبيقات الويب التي تم بناؤها لحل مشكلات حقيقية في التجارة والإنتاج.",
+      countSuffix: "مشاريع",
+      ctaEyebrow: "هل يدور في بالك مشروع جديد؟",
+      ctaTitleLine1: "دعنا نبني شيئاً",
+      ctaTitleHighlight: "يصنع فارقاً حقيقياً في عملك.",
+      ctaButton: "تواصل معي لمناقشة التفاصيل",
+    },
+  },
+};
+
+export const localizedProjects: Record<Language, ProjectTranslation[]> = {
+  en: [
+    {
+      slug: "lumen-store",
+      title: "Lumen Store",
+      category: "eCommerce",
+      year: "2026",
+      description: "A custom WooCommerce fashion store focused on a clean shopping experience and flexible store management.",
+      stack: ["WordPress", "WooCommerce", "PHP", "Tailwind CSS"],
+      featuredPoint: "Custom storefront and WooCommerce management experience.",
+      image: "/projects/lumen-store.webp",
+      liveUrl: "https://lumen-store.42web.io",
+      featured: true,
+    },
+    {
+      slug: "delivery-manager",
+      title: "Delivery Manager",
+      category: "Business System",
+      year: "2026",
+      description: "A custom WooCommerce system for managing orders, couriers, stock, returns, and delivery operations.",
+      stack: ["WordPress", "WooCommerce", "PHP", "REST API"],
+      image: "/projects/Delivery-manager.webp",
+      featuredPoint: "Courier integration with order, stock, and return workflows.",
+      featured: false,
+    },
+    {
+      slug: "data-science-portfolio",
+      title: "Data Science Portfolio",
+      category: "Portfolio",
+      year: "2026",
+      description: "A modern portfolio website built for a Data Science student to showcase projects, skills, and academic work.",
+      stack: ["Next.js", "JavaScript", "Tailwind CSS", "Supabase"],
+      featuredPoint: "Custom portfolio architecture built around projects and dynamic content.",
+      image: "/projects/data-science-portfolio.webp",
+      liveUrl: "https://mehdimadi.vercel.app",
+      featured: true,
+    },
+    {
+      slug: "wldelroudjishoes",
+      title: "WldElroudjiShoes",
+      category: "eCommerce",
+      year: "2026",
+      description: "A mobile-first WooCommerce store for a local footwear business with a streamlined ordering and Algerian delivery experience.",
+      stack: ["WordPress", "WooCommerce", "PHP", "Tailwind CSS"],
+      featuredPoint: "One-click ordering with an Algerian delivery flow.",
+      image: "/projects/wldelroudji-shoes.webp",
+      liveUrl: "https://wldelroudjishoes.com",
+      featured: true,
+    },
+  ],
+  ar: [
+    {
+      slug: "lumen-store",
+      title: "متجر Lumen للأزياء",
+      category: "تجارة إلكترونية",
+      year: "2026",
+      description: "متجر إلكتروني مخصص لملابس الموضة مبني بـ WooCommerce يركز على تجربة تسوق سريعة وإدارة مرنة وسهلة للمنتجات والمخزون.",
+      stack: ["WordPress", "WooCommerce", "PHP", "Tailwind CSS"],
+      featuredPoint: "واجهة متجر مخصصة وتجربة إدارة منتجات مبسطة وسريعة للمتجر.",
+      image: "/projects/lumen-store.webp",
+      liveUrl: "https://lumen-store.42web.io",
+      featured: true,
+    },
+    {
+      slug: "delivery-manager",
+      title: "نظام إدارة التوصيل (Delivery Manager)",
+      category: "أنظمة أعمال ولوجستيات",
+      year: "2026",
+      description: "نظام مخصص متكامل لربط شركات التوصيل، تتبع الطرود، إدارة المخزون، ومعالجة المردودات وتدفق الطلبات بدقة.",
+      stack: ["WordPress", "WooCommerce", "PHP", "REST API"],
+      image: "/projects/Delivery-manager.webp",
+      featuredPoint: "ربط متقدم مع شركات التوصيل وتتبع آلي لدورة حياة الطلب والمخزون.",
+      featured: false,
+    },
+    {
+      slug: "data-science-portfolio",
+      title: "بورتفوليو لعلوم البيانات",
+      category: "مواقع شخصية وبورتفوليو",
+      year: "2026",
+      description: "موقع بورتفوليو عصري تفاعلي لطالب وباحث في علوم البيانات لعرض النماذج الذكية، المهارات، والأعمال الأكاديمية.",
+      stack: ["Next.js", "JavaScript", "Tailwind CSS", "Supabase"],
+      featuredPoint: "بنية هندسية متطورة لعرض المشاريع البرمجية والمحتوى الديناميكي.",
+      image: "/projects/data-science-portfolio.webp",
+      liveUrl: "https://mehdimadi.vercel.app",
+      featured: true,
+    },
+    {
+      slug: "wldelroudjishoes",
+      title: "متجر WldElroudji للأحذية",
+      category: "تجارة إلكترونية محلية",
+      year: "2026",
+      description: "متجر WooCommerce متوافق تماماً مع الهواتف لعلامة أحذية محلية، يتميز بصفحة طلب مبسطة وتدفق توصيل مخصص للولايات الجزائرية والدفع عند الاستلام.",
+      stack: ["WordPress", "WooCommerce", "PHP", "Tailwind CSS"],
+      featuredPoint: "نظام طلب سريع بضغطة زر وتكامل مع شركات التوصيل المحلية والدفع عند الاستلام.",
+      image: "/projects/wldelroudji-shoes.webp",
+      liveUrl: "https://wldelroudjishoes.com",
+      featured: true,
+    },
+  ],
+};
+
+export const localizedServices: Record<Language, ServiceTranslation[]> = {
+  en: [
+    {
+      slug: "business-websites",
+      title: "Business Websites",
+      tagline: "Look credible and get contacted more.",
+      description: "Fast, responsive websites for businesses that need a clear online presence and a direct path to inquiries.",
+      duration: "1–2 weeks",
+      startingPrice: "from 50,000 DZD",
+    },
+    {
+      slug: "ecommerce-websites",
+      title: "E-commerce Websites",
+      tagline: "Sell online, including cash on delivery.",
+      description: "Mobile-first stores with product catalogs, checkout, delivery flows, and the tools needed to manage orders.",
+      duration: "2–4 weeks",
+      startingPrice: "from 120,000 DZD",
+    },
+    {
+      slug: "wordpress-woocommerce",
+      title: "WordPress & WooCommerce",
+      tagline: "A store you can manage yourself.",
+      description: "Custom WordPress and WooCommerce solutions, from tailored themes and checkout flows to business-specific functionality.",
+      duration: "1–3 weeks",
+      startingPrice: "from 60,000 DZD",
+    },
+    {
+      slug: "custom-react-applications",
+      title: "Custom React Applications",
+      tagline: "Interactive tools, dashboards, booking flows.",
+      description: "When WordPress isn't enough: fast React and Next.js interfaces with real application logic.",
+      duration: "2–5 weeks",
+      startingPrice: "On quote",
+    },
+    {
+      slug: "full-stack-web-apps",
+      title: "Full-Stack Web Apps",
+      tagline: "Frontend + backend + database, end-to-end.",
+      description: "Node.js APIs, PostgreSQL, authentication, admin panels, and complete web application architecture.",
+      duration: "3–6+ weeks",
+      startingPrice: "On quote",
+    },
+    {
+      slug: "optimization-maintenance",
+      title: "Optimization & Maintenance",
+      tagline: "Faster site, fewer headaches.",
+      description: "Performance improvements, mobile fixes, SEO basics, updates, backups, and ongoing maintenance.",
+      duration: "2–5 days",
+      startingPrice: "from 10,000 DZD",
+    },
+  ],
+  ar: [
+    {
+      slug: "business-websites",
+      title: "مواقع الشركات والمؤسسات",
+      tagline: "حضور رقمي موثوق واستقبال المزيد من طلبات العملاء.",
+      description: "مواقع سريعة ومتجاوبة مصممة للشركات والمكاتب التي تحتاج إلى واجهة احترافية ومسار مباشر للتواصل وحجز الخدمات.",
+      duration: "1–2 أسبوع",
+      startingPrice: "ابتداءً من 50,000 دج",
+    },
+    {
+      slug: "ecommerce-websites",
+      title: "متاجر إلكترونية متكاملة للبيع",
+      tagline: "بيع منتجاتك أونلاين مع الدفع عند الاستلام (COD).",
+      description: "متاجر سريعة على الهاتف بكتالوج منتجات منظم، صفحة طلب سريعة، ربط شركات التوصيل المحلية، ولوحة كاملة لإدارة الطلبيات والمخزون.",
+      duration: "2–4 أسابيع",
+      startingPrice: "ابتداءً من 120,000 دج",
+    },
+    {
+      slug: "wordpress-woocommerce",
+      title: "حلول WordPress و WooCommerce مخصصة",
+      tagline: "متجر احترافي تديره بنفسك وبكل سهولة.",
+      description: "تطوير قوالب مخصصة، تسريع المتاجر، تخصيص خطوات الدفع، وإضافة وظائف ملائمة تماماً لطبيعة نشاطك التجاري.",
+      duration: "1–3 أسابيع",
+      startingPrice: "ابتداءً من 60,000 دج",
+    },
+    {
+      slug: "custom-react-applications",
+      title: "تطبيقات React و Next.js المخصصة",
+      tagline: "واجهات تفاعلية، لوحات تحكم، وأنظمة حجز متقدمة.",
+      description: "عندما لا تفي المنصات الجاهزة بالغرض: واجهات وتطبيقات تفاعلية فائقة السرعة مع منطق برمجي مخصص لمعالجة البيانات.",
+      duration: "2–5 أسابيع",
+      startingPrice: "حسب متطلبات المشروع",
+    },
+    {
+      slug: "full-stack-web-apps",
+      title: "تطبيقات ويب متكاملة (Full-Stack)",
+      tagline: "واجهة مستخدم + سيرفر خلفي + قواعد بيانات متصلة.",
+      description: "بناء واجهات برمجية Node.js APIs، قواعد بيانات PostgreSQL، إدارة المستخدمين، لوحات إدارة المحتوى، وتأمين النظام.",
+      duration: "3–6+ أسابيع",
+      startingPrice: "حسب متطلبات المشروع",
+    },
+    {
+      slug: "optimization-maintenance",
+      title: "تسريع وصيانة وتأمين المواقع",
+      tagline: "موقع فائق السرعة، استقرار دائم، وراحة بال تامة.",
+      description: "رفع سرعة الموقع، إصلاح مشاكل التجاوب مع الهواتف، تحسين محركات البحث الأساسي (SEO)، التحديثات الأمنية والنسخ الاحتياطي الدوري.",
+      duration: "2–5 أيام",
+      startingPrice: "ابتداءً من 10,000 دج",
+    },
+  ],
+};
+
+export const localizedSkillGroups: Record<Language, SkillGroupTranslation[]> = {
+  en: [
+    {
+      title: "Core",
+      description: "Technologies I use to build production websites and web experiences.",
+      skills: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "WordPress",
+        "WooCommerce",
+      ],
+    },
+    {
+      title: "Working Knowledge",
+      description: "Tools and technologies I'm actively using to build full-stack applications.",
+      skills: [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Prisma",
+        "REST APIs",
+        "Supabase",
+        "Git",
+        "GitHub",
+      ],
+    },
+    {
+      title: "Exploring",
+      description: "Technologies I'm currently learning and experimenting with.",
+      skills: ["Python", "AI", "Automation", "n8n"],
+    },
+  ],
+  ar: [
+    {
+      title: "التقنيات الأساسية (Core)",
+      description: "التقنيات اليومية التي أعتمد عليها لبناء مواقع إلكترونية احترافية وسريعة في بيئة الإنتاج.",
+      skills: [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React",
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "WordPress",
+        "WooCommerce",
+      ],
+    },
+    {
+      title: "تطبيقات متكاملة (Working Knowledge)",
+      description: "أدوات وقواعد بيانات أستخدمها بنشاط لبناء أنظمة Full-Stack متصلة ومعالجة واجهات الـ API.",
+      skills: [
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Prisma",
+        "REST APIs",
+        "Supabase",
+        "Git",
+        "GitHub",
+      ],
+    },
+    {
+      title: "استكشاف وتطوير (Exploring)",
+      description: "تقنيات وأدوات أتعلمها وأدمجها في أتمتة العمليات والأنظمة الذكية.",
+      skills: ["Python", "AI", "Automation", "n8n"],
+    },
+  ],
+};

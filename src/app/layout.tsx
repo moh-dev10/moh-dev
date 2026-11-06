@@ -4,8 +4,10 @@ import {
   Inter_Tight,
   JetBrains_Mono,
   Instrument_Serif,
+  Cairo,
 } from "next/font/google";
 
+import { LanguageProvider } from "@/context/LanguageContext";
 import PageShell from "@/components/ui/PageShell";
 
 import "./globals.css";
@@ -35,20 +37,29 @@ const instrumentSerif = Instrument_Serif({
   style: ["normal", "italic"],
 });
 
+const cairo = Cairo({
+  variable: "--font-cairo",
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Moh Dev | Full-Stack Web Developer",
   description:
     "Portfolio of Moh Dev — Full-Stack Web Developer building modern websites, eCommerce platforms and custom web solutions.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable} ${instrumentSerif.variable}`}
+      className={`${inter.variable} ${interTight.variable} ${jetBrainsMono.variable} ${instrumentSerif.variable} ${cairo.variable}`}
     >
       <body>
-        <PageShell>{children}</PageShell>
+        <LanguageProvider>
+          <PageShell>{children}</PageShell>
+        </LanguageProvider>
       </body>
     </html>
   );
