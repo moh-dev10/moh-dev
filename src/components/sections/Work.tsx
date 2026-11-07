@@ -8,7 +8,6 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export default function Work() {
   const { t, projects, isRTL } = useLanguage();
-  const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
   const ArrowForward = isRTL ? ArrowLeft : ArrowRight;
 
   return (
@@ -55,7 +54,7 @@ export default function Work() {
         {/* 3D Coverflow Showcase Presentation */}
         <div className="mt-12 md:mt-16">
           <Reveal delay={120}>
-            <ProjectCoverflow projects={featuredProjects} />
+            <ProjectCoverflow projects={projects} />
           </Reveal>
         </div>
       </div>

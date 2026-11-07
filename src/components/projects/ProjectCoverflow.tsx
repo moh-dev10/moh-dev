@@ -94,8 +94,8 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
     let diff = index - activeIndex;
 
     // Wrap around for circular flow
-    if (diff > total / 2) diff -= total;
-    if (diff < -total / 2) diff += total;
+    while (diff > total / 2) diff -= total;
+    while (diff < -total / 2) diff += total;
 
     if (diff === 0) {
       // Active Center Card
@@ -150,9 +150,11 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
       opacity: 0,
       zIndex: 5,
       filter: "brightness(75%)",
-      isSide: true,
+      isSide: false,
     };
   };
+
+  const formatIndex = (n: number) => String(n).padStart(2, "0");
 
   return (
     <div
@@ -217,7 +219,9 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
                   ${
                     isActive
                       ? "border-[var(--border-strong)] shadow-xl cursor-grab active:cursor-grabbing pointer-events-auto"
-                      : "border-[var(--border)] cursor-pointer pointer-events-auto hover:opacity-75"
+                      : transform.isSide
+                      ? "border-[var(--border)] cursor-pointer pointer-events-auto hover:opacity-75"
+                      : "border-[var(--border)] pointer-events-none"
                   }
                 `}
               >
@@ -249,9 +253,9 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
 
                     {/* Corner index badge */}
                     <div className="absolute bottom-3.5 end-3.5 z-10 flex items-center gap-1.5 rounded-full border border-black/15 bg-black/65 backdrop-blur-md px-3 py-1 font-mono text-[11px] font-semibold text-white shadow-xs">
-                      <span className="text-accent">0{idx + 1}</span>
+                      <span className="text-accent">{formatIndex(idx + 1)}</span>
                       <span className="text-white/60">/</span>
-                      <span>0{total}</span>
+                      <span>{formatIndex(total)}</span>
                     </div>
                   </div>
 
@@ -328,7 +332,7 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
                       </a>
 
                       <span className="font-mono text-xs text-[var(--text-muted)]">
-                        0{idx + 1}
+                        {formatIndex(idx + 1)}
                       </span>
                     </div>
                   </div>
@@ -343,7 +347,7 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
       <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
         {/* Pagination tabs / pills */}
         <div
-          className="flex flex-wrap items-center gap-2"
+          className="flex flex-wrap items-center gap-1.5 sm:gap-2"
           role="tablist"
           aria-label="Coverflow slide selector"
         >
@@ -357,7 +361,7 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
                 aria-selected={isActive}
                 aria-label={`${project.title} (${idx + 1} of ${total})`}
                 className={`
-                  group relative flex items-center gap-2 rounded-full px-3.5 py-1.5
+                  group relative flex items-center gap-1.5 sm:gap-2 rounded-full px-2.5 sm:px-3 py-1.5
                   font-mono text-xs transition-all duration-300
                   ${
                     isActive
@@ -371,8 +375,8 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
                     isActive ? "bg-accent" : "bg-[var(--text-muted)] group-hover:bg-accent"
                   }`}
                 />
-                <span className="font-mono text-[11px] opacity-75">0{idx + 1}</span>
-                <span className="hidden sm:inline font-sans text-xs font-medium max-w-[120px] truncate">
+                <span className="font-mono text-[11px] opacity-75">{formatIndex(idx + 1)}</span>
+                <span className="hidden md:inline font-sans text-xs font-medium max-w-[110px] truncate">
                   {project.title}
                 </span>
               </button>
@@ -385,10 +389,10 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
           {/* Numerical Counter */}
           <div className="flex items-center gap-2 font-mono text-xs text-[var(--text-secondary)]">
             <span className="font-bold text-[var(--foreground)] text-sm">
-              0{activeIndex + 1}
+              {formatIndex(activeIndex + 1)}
             </span>
             <span className="text-[var(--text-muted)]">/</span>
-            <span className="text-[var(--text-muted)]">0{total}</span>
+            <span className="text-[var(--text-muted)]">{formatIndex(total)}</span>
           </div>
 
           {/* Navigation Controls */}
