@@ -2,14 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import Image from "next/image";
-import {
-  ArrowUpLeft,
-  ArrowUpRight,
-  ExternalLink,
-  ChevronLeft,
-  ChevronRight,
-  Layers,
-} from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
 import type { ProjectTranslation } from "@/data/translations";
 import { useLanguage } from "@/context/LanguageContext";
@@ -22,10 +15,9 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const shouldReduceMotion = useReducedMotion();
-  const { t, isRTL } = useLanguage();
+  const { isRTL } = useLanguage();
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const ArrowCorner = isRTL ? ArrowUpLeft : ArrowUpRight;
   const total = projects.length;
 
   const paginate = useCallback(
@@ -145,7 +137,7 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
       className="relative outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-4 rounded-2xl"
     >
       {/* Slider Viewport Window */}
-      <div className="relative overflow-hidden min-h-[580px] sm:min-h-[620px] lg:min-h-[520px]">
+      <div className="relative overflow-hidden min-h-[380px] sm:min-h-[400px] lg:min-h-[360px]">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.article
             key={currentProject.slug}
@@ -161,8 +153,8 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
             className="
               touch-pan-y cursor-grab active:cursor-grabbing
               grid grid-cols-1 lg:grid-cols-12
-              overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--surface)]
-              shadow-sm hover:border-[var(--border-strong)]
+              overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--surface)]
+              shadow-xs hover:border-[var(--border-strong)]
               transition-colors duration-200
             "
           >
@@ -170,9 +162,9 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
             <div
               className="
                 group relative lg:col-span-7 xl:col-span-7
-                min-h-[260px] sm:min-h-[340px] md:min-h-[400px] lg:min-h-full
+                min-h-[220px] sm:min-h-[280px] md:min-h-[320px] lg:min-h-[340px]
                 overflow-hidden bg-[var(--surface-muted)]
-                rounded-t-2xl lg:rounded-t-none lg:rounded-s-2xl
+                rounded-t-xl lg:rounded-t-none lg:rounded-s-xl
                 border-b lg:border-b-0 lg:border-e border-[var(--border)]
               "
             >
@@ -190,28 +182,22 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
               />
 
               {/* Category pill on image */}
-              <div className="absolute top-4 start-4 z-10 flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-md px-3.5 py-1.5 text-xs font-mono font-medium text-[var(--foreground)] shadow-xs">
+              <div className="absolute top-3.5 start-3.5 z-10 flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-md px-3 py-1 text-[11px] font-mono font-medium text-[var(--foreground)] shadow-xs">
                 <span className="h-1.5 w-1.5 rounded-full bg-accent" />
                 <span>{currentProject.category}</span>
               </div>
-
-              {/* Slide index badge on image */}
-              <div className="absolute bottom-4 end-4 z-10 hidden sm:flex items-center gap-1.5 rounded-full border border-black/10 bg-black/60 backdrop-blur-md px-3 py-1 font-mono text-[11px] font-semibold text-white shadow-xs">
-                <Layers size={12} className="text-accent" />
-                <span>0{currentIndex + 1} / 0{total}</span>
-              </div>
             </div>
 
-            {/* Right side — Project Information */}
+            {/* Right side — Project Information (Compact) */}
             <div
               className="
                 lg:col-span-5 xl:col-span-5
                 flex flex-col justify-between
-                p-6 sm:p-8 lg:p-10 xl:p-12
+                p-5 sm:p-6 lg:p-7 xl:p-8
               "
             >
               <div>
-                {/* Category & Year */}
+                {/* 1. Category + Year */}
                 <div className="flex items-center justify-between gap-4">
                   <span className="mono-label text-accent font-semibold text-xs tracking-wider">
                     {currentProject.category}
@@ -222,25 +208,25 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
                   </span>
                 </div>
 
-                {/* Project Title */}
-                <h3 className="mt-4 font-heading text-3xl font-bold tracking-tight sm:text-4xl lg:text-4xl xl:text-5xl text-[var(--foreground)]">
+                {/* 2. Project Title */}
+                <h3 className="mt-2.5 font-heading text-2xl font-bold tracking-tight sm:text-3xl lg:text-3xl text-[var(--foreground)]">
                   {currentProject.title}
                 </h3>
 
-                {/* Description */}
-                <p className="mt-4 text-sm leading-7 text-[var(--text-secondary)] sm:text-base sm:leading-8">
+                {/* 3. Short Description (max 2-3 lines) */}
+                <p className="mt-2.5 text-xs sm:text-sm leading-6 text-[var(--text-secondary)] line-clamp-2 md:line-clamp-3">
                   {currentProject.description}
                 </p>
 
-                {/* Tech Stack Badges */}
-                <div className="mt-6 flex flex-wrap gap-2">
-                  {currentProject.stack.map((tech) => (
+                {/* 4. Technology Stack (Top 3-4 badges only) */}
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {currentProject.stack.slice(0, 4).map((tech) => (
                     <span
                       key={tech}
                       className="
                         rounded-sm border border-[var(--border)]
                         bg-[var(--surface-muted)]
-                        px-2.5 py-1
+                        px-2 py-0.5
                         font-mono text-[10px] uppercase tracking-wider
                         text-[var(--text-secondary)]
                       "
@@ -249,66 +235,35 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
                     </span>
                   ))}
                 </div>
-
-                {/* Key Feature Callout */}
-                <div className="mt-6 border-s-2 border-[var(--accent)] ps-4 bg-[var(--surface-muted)]/50 py-3 rounded-e-md">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--text-muted)]">
-                    {t.work.keyFeature}
-                  </span>
-
-                  <p className="mt-1 text-xs leading-6 text-[var(--foreground)] sm:text-sm">
-                    {currentProject.featuredPoint}
-                  </p>
-                </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="mt-8 pt-6 border-t border-[var(--border)] flex flex-wrap items-center gap-3">
-                {/* Live Demo */}
-                {currentProject.liveUrl && (
-                  <a
-                    href={currentProject.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="
-                      group/link inline-flex items-center gap-2 rounded-md
-                      border border-black bg-black px-5 py-3
-                      font-mono text-xs uppercase tracking-wider !text-white
-                      transition-all duration-200
-                      hover:-translate-y-0.5 hover:border-[var(--accent)] hover:bg-[var(--accent)]
-                      focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]
-                    "
-                  >
-                    <span>{t.work.liveDemo}</span>
-                    <ExternalLink
-                      aria-hidden="true"
-                      size={14}
-                      className="text-white transition-transform duration-200 group-hover/link:translate-x-0.5 rtl:group-hover/link:-translate-x-0.5"
-                    />
-                  </a>
-                )}
+              {/* 5. Primary CTA Button Only */}
+              <div className="mt-5 pt-4 border-t border-[var(--border)] flex items-center justify-between">
+                <a
+                  href={currentProject.liveUrl || "/projects"}
+                  target={currentProject.liveUrl ? "_blank" : undefined}
+                  rel={currentProject.liveUrl ? "noopener noreferrer" : undefined}
+                  className="
+                    group/link inline-flex items-center gap-2 rounded-md
+                    border border-black bg-black px-4 sm:px-5 py-2.5
+                    font-mono text-xs uppercase tracking-wider !text-white
+                    transition-all duration-200
+                    hover:-translate-y-0.5 hover:border-[var(--accent)] hover:bg-[var(--accent)]
+                    focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]
+                  "
+                >
+                  <span>{isRTL ? "مشاهدة المشروع" : "View Project"}</span>
+                  <ExternalLink
+                    aria-hidden="true"
+                    size={13}
+                    className="text-white transition-transform duration-200 group-hover/link:translate-x-0.5 rtl:group-hover/link:-translate-x-0.5"
+                  />
+                </a>
 
-                {/* Case Study */}
-                {currentProject.caseStudyUrl && (
-                  <a
-                    href={currentProject.caseStudyUrl}
-                    className="
-                      group/link inline-flex items-center gap-2 rounded-md
-                      border border-[var(--border-strong)] bg-transparent px-5 py-3
-                      font-mono text-xs uppercase tracking-wider text-[var(--foreground)]
-                      transition-all duration-200
-                      hover:-translate-y-0.5 hover:bg-[var(--accent)] hover:!text-white hover:border-[var(--accent)]
-                      focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--accent)]
-                    "
-                  >
-                    <span>{t.work.caseStudy}</span>
-                    <ArrowCorner
-                      aria-hidden="true"
-                      size={14}
-                      className="transition-transform duration-200 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 rtl:group-hover/link:-translate-x-0.5"
-                    />
-                  </a>
-                )}
+                {/* Subtle project index */}
+                <span className="font-mono text-xs text-[var(--text-muted)]">
+                  0{currentIndex + 1} / 0{total}
+                </span>
               </div>
             </div>
           </motion.article>
@@ -316,7 +271,7 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
       </div>
 
       {/* Slider Controls Bar */}
-      <div className="mt-8 flex flex-col-reverse gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-6 flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
         {/* Pagination tabs / pills */}
         <div
           className="flex flex-wrap items-center gap-2"
