@@ -1,6 +1,6 @@
 "use client";
 
-import ProjectCard from "../../components/projects/ProjectCard";
+import ProjectSlider from "@/components/projects/ProjectSlider";
 import { ArrowRight, ArrowLeft } from "lucide-react";
 import Reveal from "../ui/Reveal";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { useLanguage } from "@/context/LanguageContext";
 
 export default function Work() {
   const { t, projects, isRTL } = useLanguage();
-  const featuredProjects = projects.filter((project) => project.featured);
+  const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
   const ArrowForward = isRTL ? ArrowLeft : ArrowRight;
 
   return (
@@ -51,12 +51,10 @@ export default function Work() {
           </Reveal>
         </div>
 
-        <div className="mt-14 space-y-8">
-          {featuredProjects.slice(0, 3).map((project, index) => (
-            <Reveal key={project.slug} delay={index * 120}>
-              <ProjectCard project={project} />
-            </Reveal>
-          ))}
+        <div className="mt-12 md:mt-14">
+          <Reveal delay={120}>
+            <ProjectSlider projects={featuredProjects} />
+          </Reveal>
         </div>
       </div>
     </section>
