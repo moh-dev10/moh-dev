@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useRef, useEffect } from "react";
 import Image from "next/image";
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { motion, AnimatePresence, useReducedMotion, type Variants } from "framer-motion";
 import type { ProjectTranslation } from "@/data/translations";
 import { useLanguage } from "@/context/LanguageContext";
@@ -14,6 +14,7 @@ type ProjectSliderProps = {
 export default function ProjectSlider({ projects }: ProjectSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const { isRTL } = useLanguage();
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -27,6 +28,17 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
     },
     [total]
   );
+
+  // Auto-swipe every 4.5s (pauses on hover, touch, or user interaction)
+  useEffect(() => {
+    if (isPaused || shouldReduceMotion || total <= 1) return;
+
+    const interval = setInterval(() => {
+      paginate(1);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [isPaused, shouldReduceMotion, total, paginate, currentIndex]);
 
   const goToSlide = useCallback(
     (index: number) => {
@@ -131,6 +143,10 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
       ref={sliderRef}
       tabIndex={0}
       onKeyDown={handleKeyDown}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onTouchStart={() => setIsPaused(true)}
+      onTouchEnd={() => setIsPaused(false)}
       role="region"
       aria-roledescription="carousel"
       aria-label="Featured Projects Slider"
@@ -288,7 +304,7 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
                 aria-selected={isActive}
                 aria-label={`${project.title} (${idx + 1} of ${total})`}
                 className={`
-                  group relative flex items-center gap-2 rounded-full px-3.5 py-1.5
+                  group relative flex items-center gap-2 rounded-full px-3.5 py-1.5 overflow-hidden
                   font-mono text-xs transition-all duration-300
                   ${
                     isActive
@@ -297,13 +313,22 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
                   }
                 `}
               >
+                {isActive && !isPaused && (
+                  <motion.div
+                    key={`progress-${currentIndex}`}
+                    initial={{ width: "0%" }}
+                    animate={{ width: "100%" }}
+                    transition={{ duration: 4.5, ease: "linear" }}
+                    className="absolute inset-0 bg-white/15 pointer-events-none"
+                  />
+                )}
                 <span
-                  className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                  className={`relative z-10 h-1.5 w-1.5 rounded-full transition-colors ${
                     isActive ? "bg-accent" : "bg-[var(--text-muted)] group-hover:bg-accent"
                   }`}
                 />
-                <span className="font-mono text-[11px] opacity-75">0{idx + 1}</span>
-                <span className="hidden sm:inline font-sans text-xs font-medium max-w-[120px] truncate">
+                <span className="relative z-10 font-mono text-[11px] opacity-75">0{idx + 1}</span>
+                <span className="relative z-10 hidden sm:inline font-sans text-xs font-medium max-w-[120px] truncate">
                   {project.title}
                 </span>
               </button>
@@ -324,6 +349,34 @@ export default function ProjectSlider({ projects }: ProjectSliderProps) {
 
           {/* Navigation Controls */}
           <div className="flex items-center gap-2">
+            {/* Play/Pause toggle */}
+            <button
+              onClick={() => setIsPaused((prev) => !prev)}
+              aria-label={
+                isPaused
+                  ? isRTL
+                    ? "تشغيل التمرير التلقائي"
+                    : "Resume auto-swipe"
+                  : isRTL
+                  ? "إيقاف التمرير التلقائي"
+                  : "Pause auto-swipe"
+              }
+              className="
+                flex h-11 w-11 items-center justify-center rounded-full
+                border border-[var(--border)] bg-[var(--surface)] text-[var(--text-secondary)]
+                shadow-xs transition-all duration-200
+                hover:border-[var(--accent)] hover:text-[var(--accent)]
+                active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]
+              "
+              title={isPaused ? "Play auto-swipe" : "Pause auto-swipe"}
+            >
+              {isPaused ? (
+                <Play size={13} className="fill-current ms-0.5" />
+              ) : (
+                <Pause size={13} className="fill-current" />
+              )}
+            </button>
+
             <button
               onClick={() => paginate(-1)}
               aria-label={isRTL ? "المشروع التالي" : "Previous project"}
