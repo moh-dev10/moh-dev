@@ -15,6 +15,31 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "darna",
+    title: "DARNA",
+    category: "E-Commerce Business System",
+    year: "2026",
+    description:
+      "A conversion-focused landing page solution built for the Algerian e-commerce market, backed by a custom dashboard that centralizes order management, delivery operations, shipping rates, and marketing tracking.",
+    stack: [
+      "WordPress",
+      "PHP",
+      "JavaScript",
+      "Tailwind CSS",
+      "REST API",
+      "Custom WordPress Plugin Architecture",
+      "External Shipping API Integrations",
+      "Meta Pixel",
+      "TikTok Pixel",
+      "Google Tracking",
+    ],
+    featuredPoint:
+      "A centralized business management system combining custom landing pages, order processing, 58-Wilaya shipping rate management, scalable multi-carrier integrations targeting 80+ delivery companies, and multi-platform marketing tracking.",
+    image: "/projects/darna.webp",
+    liveUrl: "https://darna.wldelroudjishoes.com",
+    featured: true,
+  },
+  {
   slug: "lumen-store",
   title: "Lumen Store",
   category: "eCommerce",
