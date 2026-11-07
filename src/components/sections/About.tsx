@@ -24,6 +24,7 @@ export default function About() {
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="absolute inset-0 h-full w-full object-cover"
+                referrerPolicy="no-referrer"
               />
             </div>
           </Reveal>

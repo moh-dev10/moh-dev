@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowUpRight, ArrowUpLeft, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ArrowUpLeft, ExternalLink, Lock } from "lucide-react";
 import type { ProjectTranslation } from "@/data/translations";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -54,6 +54,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           "
           sizes="(max-width: 768px) 100vw, 50vw"
           loading="eager"
+          referrerPolicy="no-referrer"
         />
       </div>
 
@@ -176,6 +177,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 "
               />
             </a>
+          )}
+
+          {/* Private personal project indicator */}
+          {!project.caseStudyUrl && !project.liveUrl && (
+            <span className="inline-flex items-center gap-1.5 rounded-md border border-[var(--border)] bg-[var(--surface-muted)] px-3.5 py-2 font-mono text-[10px] uppercase tracking-wider text-[var(--text-muted)]">
+              <Lock aria-hidden="true" size={12} className="text-accent" />
+              <span>{isRTL ? "مشروع شخصي خاص" : "Private Personal Project"}</span>
+            </span>
           )}
         </div>
       </div>

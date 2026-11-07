@@ -2,6 +2,7 @@
 
 import { useRouter, usePathname } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
+import BrandLogo from "@/components/ui/BrandLogo";
 import { ArrowUp } from "lucide-react";
 
 export default function Footer() {
@@ -47,10 +48,10 @@ export default function Footer() {
           <a
             href="#hero"
             onClick={handleScrollToTop}
-            className="font-heading text-lg font-bold tracking-tight text-[var(--foreground)] transition-opacity hover:opacity-85"
+            className="shrink-0 transition-opacity hover:opacity-85"
             aria-label="Moh.Dev - Back to top"
           >
-            Moh<span className="text-accent">.</span>Dev
+            <BrandLogo variant="full" size="sm" />
           </a>
 
           <span className="hidden sm:inline text-[var(--border-strong)]">|</span>

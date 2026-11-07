@@ -186,6 +186,7 @@ export const translations = {
       filterAll: "All Projects",
       filterEcommerce: "E-Commerce",
       filterBusinessSystems: "Business Systems",
+      filterWebApplications: "Web Applications",
       filterEducation: "Education / LMS",
       filterPortfolio: "Portfolio",
       noProjectsTitle: "No projects found",
@@ -354,6 +355,7 @@ export const translations = {
       filterAll: "جميع المشاريع",
       filterEcommerce: "التجارة الإلكترونية",
       filterBusinessSystems: "أنظمة الأعمال",
+      filterWebApplications: "تطبيقات الويب",
       filterEducation: "التعليم والمنصات",
       filterPortfolio: "المواقع الشخصية",
       noProjectsTitle: "لا توجد مشاريع",
@@ -464,6 +466,28 @@ export const localizedProjects: Record<Language, ProjectTranslation[]> = {
       liveUrl: "https://wldelroudjishoes.com",
       featured: true,
     },
+    {
+      slug: "dizihub",
+      title: "DiziHub",
+      category: "Personal Web Application",
+      year: "2026",
+      description:
+        "A private, cinematic web application built for personal TV series discovery and viewing. Features a polished responsive interface, personal watchlists, viewing history, and an integrated media player.",
+      stack: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Media Player API",
+        "TMDB API",
+        "Local Persistence",
+        "State Management",
+      ],
+      featuredPoint:
+        "Private personal architecture with catalog discovery, local viewing history and watchlist persistence, and integrated media playback.",
+      image: "/assets/aistudio/file_00000000dbf881f4bb101ed2c4473fcc_ed388ed1.png",
+      featured: true,
+    },
   ],
   ar: [
     {
@@ -558,6 +582,28 @@ export const localizedProjects: Record<Language, ProjectTranslation[]> = {
       featuredPoint: "نظام طلب سريع بضغطة زر وتكامل مع شركات التوصيل المحلية والدفع عند الاستلام.",
       image: "/assets/aistudio/1794060464052_8c24ab4d.jpg",
       liveUrl: "https://wldelroudjishoes.com",
+      featured: true,
+    },
+    {
+      slug: "dizihub",
+      title: "DiziHub",
+      category: "تطبيق ويب شخصي",
+      year: "2026",
+      description:
+        "تطبيق ويب شخصي وخاص لاكتشاف المسلسلات ومتابعة مشاهدتها، يتميز بواجهة سينمائية متجاوبة، وقوائم مشاهدة شخصية، وسجل للمشاهدة، ومشغل وسائط مدمج.",
+      stack: [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Media Player API",
+        "TMDB API",
+        "Local Persistence",
+        "State Management",
+      ],
+      featuredPoint:
+        "بنية تطبيق شخصي خاص مع محرك استكشاف، وحفظ سجل المشاهدة وقوائم المتابعة محلياً، ومحرك تشغيل وسائط مدمج.",
+      image: "/assets/aistudio/file_00000000dbf881f4bb101ed2c4473fcc_ed388ed1.png",
       featured: true,
     },
   ],

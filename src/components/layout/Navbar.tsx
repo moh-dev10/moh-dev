@@ -4,6 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import MobileMenu from "./MobileMenu";
 import DesktopNav from "./DesktopNav";
 import LanguageSwitcher from "./LanguageSwitcher";
+import BrandLogo from "@/components/ui/BrandLogo";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
@@ -40,10 +41,10 @@ export default function Navbar() {
         <a
           href="#hero"
           onClick={handleLogoClick}
-          className="font-heading text-xl font-bold tracking-tight shrink-0 transition-opacity hover:opacity-85"
+          className="shrink-0 transition-opacity hover:opacity-85"
           aria-label="Moh.Dev - Back to top"
         >
-          Moh<span className="text-accent">.</span>Dev
+          <BrandLogo variant="full" size="sm" />
         </a>
 
         {/* Navigation */}

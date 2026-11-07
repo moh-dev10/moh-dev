@@ -36,6 +36,15 @@ export function matchesProjectCategory(
     );
   }
 
+  if (filterId === "web-applications") {
+    return (
+      categoryLower.includes("personal web application") ||
+      categoryLower.includes("web application") ||
+      categoryLower.includes("application") ||
+      project.category.includes("تطبيق ويب")
+    );
+  }
+
   if (filterId === "education") {
     return (
       categoryLower.includes("education") ||
@@ -80,6 +89,11 @@ export default function ProjectsPage() {
         id: "business-systems",
         label: t.projectsPage.filterBusinessSystems,
         count: projects.filter((p) => matchesProjectCategory(p, "business-systems")).length,
+      },
+      {
+        id: "web-applications",
+        label: t.projectsPage.filterWebApplications,
+        count: projects.filter((p) => matchesProjectCategory(p, "web-applications")).length,
       },
       {
         id: "education",

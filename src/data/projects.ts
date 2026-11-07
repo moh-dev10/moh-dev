@@ -115,4 +115,26 @@ export const projects: Project[] = [
   liveUrl:"https://wldelroudjishoes.com",
   featured:true,
 },
+{
+  slug: "dizihub",
+  title: "DiziHub",
+  category: "Personal Web Application",
+  year: "2026",
+  description:
+    "A private, cinematic web application built for personal TV series discovery and viewing. Features a polished responsive interface, personal watchlists, viewing history, and an integrated media player.",
+  stack: [
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Media Player API",
+    "TMDB API",
+    "Local Persistence",
+    "State Management",
+  ],
+  featuredPoint:
+    "Private personal architecture with catalog discovery, local viewing history and watchlist persistence, and integrated media playback.",
+  image: "/assets/aistudio/file_00000000dbf881f4bb101ed2c4473fcc_ed388ed1.png",
+  featured: true,
+},
 ];
