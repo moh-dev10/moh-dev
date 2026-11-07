@@ -65,6 +65,28 @@ export const projects: Project[] = [
   featuredPoint: "Courier integration with order, stock, and return workflows.",
   featured:false
 },
+{
+  slug: "3alemni",
+  title: "3alemni",
+  category: "Education Platform / LMS",
+  year: "2026",
+  description:
+    "A bilingual online learning platform built with WordPress and Tutor LMS, featuring a custom-designed learning environment tailored to students and instructors, with structured course management and dedicated user experiences.",
+  stack: [
+    "WordPress",
+    "PHP",
+    "Tutor LMS",
+    "JavaScript",
+    "Tailwind CSS",
+    "Custom WordPress Theme",
+    "Custom UI Components",
+  ],
+  featuredPoint:
+    "A customized bilingual LMS experience built on WordPress and Tutor LMS, with dedicated student and instructor interfaces and a structured course management environment.",
+  image: "/projects/3alemni.webp",
+  liveUrl: "https://3alemni.42web.io",
+  featured: false,
+},
 
 {
   slug:"data-science-portfolio",

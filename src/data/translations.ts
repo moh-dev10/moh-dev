@@ -401,6 +401,28 @@ export const localizedProjects: Record<Language, ProjectTranslation[]> = {
       featured: false,
     },
     {
+      slug: "3alemni",
+      title: "3alemni",
+      category: "Education Platform / LMS",
+      year: "2026",
+      description:
+        "A bilingual online learning platform built with WordPress and Tutor LMS, featuring a custom-designed learning environment tailored to students and instructors, with structured course management and dedicated user experiences.",
+      stack: [
+        "WordPress",
+        "PHP",
+        "Tutor LMS",
+        "JavaScript",
+        "Tailwind CSS",
+        "Custom WordPress Theme",
+        "Custom UI Components",
+      ],
+      featuredPoint:
+        "A customized bilingual LMS experience built on WordPress and Tutor LMS, with dedicated student and instructor interfaces and a structured course management environment.",
+      image: "/projects/3alemni.webp",
+      liveUrl: "https://3alemni.42web.io",
+      featured: false,
+    },
+    {
       slug: "data-science-portfolio",
       title: "Data Science Portfolio",
       category: "Portfolio",
@@ -472,6 +494,28 @@ export const localizedProjects: Record<Language, ProjectTranslation[]> = {
       stack: ["WordPress", "WooCommerce", "PHP", "REST API"],
       image: "/projects/Delivery-manager.webp",
       featuredPoint: "ربط متقدم مع شركات التوصيل وتتبع آلي لدورة حياة الطلب والمخزون.",
+      featured: false,
+    },
+    {
+      slug: "3alemni",
+      title: "علّمني",
+      category: "منصة تعليمية / نظام إدارة التعلّم",
+      year: "2026",
+      description:
+        "منصة تعليم إلكتروني ثنائية اللغة مبنية باستخدام WordPress وTutor LMS، توفر بيئة تعليمية مخصصة للطلاب والأساتذة، مع تنظيم الدورات التعليمية وتجارب استخدام مصممة حسب احتياجات كل مستخدم.",
+      stack: [
+        "WordPress",
+        "PHP",
+        "Tutor LMS",
+        "JavaScript",
+        "Tailwind CSS",
+        "Custom WordPress Theme",
+        "Custom UI Components",
+      ],
+      featuredPoint:
+        "تجربة تعليم إلكتروني ثنائية اللغة مبنية باستخدام WordPress وTutor LMS، مع واجهات مخصصة للطلاب والأساتذة وبيئة منظمة لإدارة الدورات التعليمية.",
+      image: "/projects/3alemni.webp",
+      liveUrl: "https://3alemni.42web.io",
       featured: false,
     },
     {
