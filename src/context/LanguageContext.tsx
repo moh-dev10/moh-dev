@@ -38,8 +38,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   });
 
   useEffect(() => {
+    const isArabic = language === "ar";
     document.documentElement.lang = language;
-    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
+    if (document.body) {
+      document.body.lang = language;
+      document.body.dir = isArabic ? "rtl" : "ltr";
+    }
   }, [language]);
 
   const setLanguage = useCallback((lang: Language) => {

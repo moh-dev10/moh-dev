@@ -552,7 +552,7 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
                   }`}
                 />
                 <span className="font-mono text-[11px] opacity-75">{formatIndex(idx + 1)}</span>
-                <span className="hidden md:inline font-sans text-xs font-medium max-w-[110px] truncate">
+                <span className="hidden md:inline text-xs font-medium max-w-[110px] truncate">
                   {project.title}
                 </span>
               </button>

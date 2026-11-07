@@ -24,6 +24,7 @@ export default function LanguageSwitcher({
         <div className="flex items-center gap-1 rounded-lg bg-[var(--surface)] p-1 border border-[var(--border)]">
           <button
             type="button"
+            lang="en"
             onClick={() => setLanguage("en")}
             className={`rounded-md px-3 py-1 font-mono text-xs transition-colors duration-200 ${
               language === "en"
@@ -35,8 +36,9 @@ export default function LanguageSwitcher({
           </button>
           <button
             type="button"
+            lang="ar"
             onClick={() => setLanguage("ar")}
-            className={`rounded-md px-3 py-1 font-mono text-xs transition-colors duration-200 ${
+            className={`rounded-md px-3 py-1 text-xs transition-colors duration-200 ${
               language === "ar"
                 ? "bg-[var(--dark)] text-white font-bold"
                 : "text-[var(--text-secondary)] hover:text-[var(--foreground)]"
@@ -57,6 +59,7 @@ export default function LanguageSwitcher({
     >
       <button
         type="button"
+        lang="en"
         onClick={() => setLanguage("en")}
         aria-pressed={language === "en"}
         aria-label="Switch to English"
@@ -70,10 +73,11 @@ export default function LanguageSwitcher({
       </button>
       <button
         type="button"
+        lang="ar"
         onClick={() => setLanguage("ar")}
         aria-pressed={language === "ar"}
         aria-label="التبديل إلى العربية"
-        className={`rounded-full px-2.5 py-1 text-[10px] tracking-wider transition-all duration-200 ${
+        className={`rounded-full px-2.5 py-1 text-[10px] transition-all duration-200 ${
           language === "ar"
             ? "bg-white font-bold text-[var(--foreground)] shadow-xs"
             : "text-[var(--text-secondary)] hover:text-[var(--foreground)]"
