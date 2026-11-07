@@ -111,7 +111,7 @@ export const projects: Project[] = [
     "A mobile-first WooCommerce store for a local footwear business with a streamlined ordering and Algerian delivery experience.",
   stack: ["WordPress", "WooCommerce", "PHP", "Tailwind CSS"],
   featuredPoint: "One-click ordering with an Algerian delivery flow.",
-  image: "/projects/wldelroudji-shoes.webp",
+  image: "/assets/aistudio/1794060464052_8c24ab4d.jpg",
   liveUrl:"https://wldelroudjishoes.com",
   featured:true,
 },
