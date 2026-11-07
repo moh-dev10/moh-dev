@@ -1,19 +1,25 @@
 "use client";
 
+import { useState } from "react";
+import ProjectSnapShowcase from "@/components/projects/ProjectSnapShowcase";
 import ProjectSlider from "@/components/projects/ProjectSlider";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, LayoutTemplate, SlidersHorizontal } from "lucide-react";
 import Reveal from "../ui/Reveal";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function Work() {
   const { t, projects, isRTL } = useLanguage();
+  // Switch between "snap" (Full-Screen Snap Showcase) and "slider" (Horizontal Project Slider)
+  const [showcaseMode, setShowcaseMode] = useState<"snap" | "slider">("snap");
+
   const featuredProjects = projects.filter((project) => project.featured).slice(0, 3);
   const ArrowForward = isRTL ? ArrowLeft : ArrowRight;
 
   return (
     <section id="work" className="section-padding">
       <div className="container-main">
+        {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <Reveal>
             <div>
@@ -32,10 +38,45 @@ export default function Work() {
           </Reveal>
 
           <Reveal>
-            <div className="mt-4 flex items-center gap-6">
-              <p className="max-w-sm text-xs leading-4 text-[var(--text-secondary)] md:text-sm md:leading-6">
-                {t.work.leadText}
-              </p>
+            <div className="mt-4 flex flex-wrap items-center gap-4 sm:gap-6">
+              {/* Experimental View Switcher (Compare Snap Showcase vs Slider) */}
+              <div
+                className="inline-flex items-center rounded-full border border-[var(--border)] bg-[var(--surface)] p-1 shadow-2xs"
+                role="group"
+                aria-label="Showcase View Mode"
+              >
+                <button
+                  type="button"
+                  onClick={() => setShowcaseMode("snap")}
+                  className={`
+                    inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-mono transition-all duration-200
+                    ${
+                      showcaseMode === "snap"
+                        ? "bg-[var(--foreground)] text-white shadow-xs font-semibold"
+                        : "text-[var(--text-secondary)] hover:text-[var(--foreground)]"
+                    }
+                  `}
+                >
+                  <LayoutTemplate size={13} />
+                  <span>{isRTL ? "عرض Snap" : "Snap Showcase"}</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setShowcaseMode("slider")}
+                  className={`
+                    inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-mono transition-all duration-200
+                    ${
+                      showcaseMode === "slider"
+                        ? "bg-[var(--foreground)] text-white shadow-xs font-semibold"
+                        : "text-[var(--text-secondary)] hover:text-[var(--foreground)]"
+                    }
+                  `}
+                >
+                  <SlidersHorizontal size={13} />
+                  <span>{isRTL ? "سلايدر أفقي" : "Horizontal Slider"}</span>
+                </button>
+              </div>
 
               <Link
                 href="/projects"
@@ -51,10 +92,15 @@ export default function Work() {
           </Reveal>
         </div>
 
-        <div className="mt-12 md:mt-14">
-          <Reveal delay={120}>
-            <ProjectSlider projects={featuredProjects} />
-          </Reveal>
+        {/* Showcase Presentation Area */}
+        <div className="mt-12 md:mt-16">
+          {showcaseMode === "snap" ? (
+            <ProjectSnapShowcase projects={featuredProjects} />
+          ) : (
+            <Reveal delay={120}>
+              <ProjectSlider projects={featuredProjects} />
+            </Reveal>
+          )}
         </div>
       </div>
     </section>
