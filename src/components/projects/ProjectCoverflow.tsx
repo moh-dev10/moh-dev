@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { ExternalLink, ChevronLeft, ChevronRight, Play, Pause, Lock } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 import type { ProjectTranslation } from "@/data/translations";
@@ -458,55 +459,78 @@ export default function ProjectCoverflow({ projects }: ProjectCoverflowProps) {
 
                     {/* Primary CTA */}
                     <div className="mt-5 pt-3.5 border-t border-[var(--border)] flex items-center justify-between">
-                      {project.liveUrl ? (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => {
-                            if (!isActive) {
-                              e.preventDefault();
-                              goToSlide(idx);
-                            }
-                          }}
-                          className="
-                            group/link inline-flex items-center gap-2 rounded-md
-                            border border-black bg-black px-3.5 py-1.5
-                            font-mono text-xs uppercase tracking-wider !text-white
-                            transition-all duration-200
-                            hover:-translate-y-0.5 hover:border-accent hover:bg-accent
-                            focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent
-                          "
-                        >
-                          <span>{isRTL ? "معاينة حية" : "Live Demo"}</span>
-                          <ExternalLink
-                            aria-hidden="true"
-                            size={13}
-                            className="text-white transition-transform duration-200 group-hover/link:translate-x-0.5 rtl:group-hover/link:-translate-x-0.5"
-                          />
-                        </a>
-                      ) : (
-                        <a
-                          href="/projects"
-                          onClick={(e) => {
-                            if (!isActive) {
-                              e.preventDefault();
-                              goToSlide(idx);
-                            }
-                          }}
-                          className="
-                            group/link inline-flex items-center gap-2 rounded-md
-                            border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3.5 py-1.5
-                            font-mono text-xs uppercase tracking-wider text-[var(--foreground)]
-                            transition-all duration-200
-                            hover:-translate-y-0.5 hover:border-accent hover:text-accent
-                            focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent
-                          "
-                        >
-                          <Lock size={12} className="text-accent" />
-                          <span>{isRTL ? "مشروع خاص" : "Private Project"}</span>
-                        </a>
-                      )}
+                      <div className="flex items-center gap-2">
+                        {project.caseStudyUrl && (
+                          <Link
+                            href={project.caseStudyUrl}
+                            onClick={(e) => {
+                              if (!isActive) {
+                                e.preventDefault();
+                                goToSlide(idx);
+                              }
+                            }}
+                            className="
+                              group/link inline-flex items-center gap-1.5 rounded-md
+                              border border-[var(--border-strong)] bg-transparent px-3 py-1.5
+                              font-mono text-xs uppercase tracking-wider text-[var(--foreground)]
+                              transition-all duration-200
+                              hover:-translate-y-0.5 hover:border-accent hover:text-accent
+                              focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent
+                            "
+                          >
+                            <span>{isRTL ? "دراسة الحالة" : "Case Study"}</span>
+                          </Link>
+                        )}
+                        {project.liveUrl ? (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                              if (!isActive) {
+                                e.preventDefault();
+                                goToSlide(idx);
+                              }
+                            }}
+                            className="
+                              group/link inline-flex items-center gap-2 rounded-md
+                              border border-black bg-black px-3.5 py-1.5
+                              font-mono text-xs uppercase tracking-wider !text-white
+                              transition-all duration-200
+                              hover:-translate-y-0.5 hover:border-accent hover:bg-accent
+                              focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent
+                            "
+                          >
+                            <span>{isRTL ? "معاينة حية" : "Live Demo"}</span>
+                            <ExternalLink
+                              aria-hidden="true"
+                              size={13}
+                              className="text-white transition-transform duration-200 group-hover/link:translate-x-0.5 rtl:group-hover/link:-translate-x-0.5"
+                            />
+                          </a>
+                        ) : !project.caseStudyUrl ? (
+                          <Link
+                            href="/projects"
+                            onClick={(e) => {
+                              if (!isActive) {
+                                e.preventDefault();
+                                goToSlide(idx);
+                              }
+                            }}
+                            className="
+                              group/link inline-flex items-center gap-2 rounded-md
+                              border border-[var(--border-strong)] bg-[var(--surface-muted)] px-3.5 py-1.5
+                              font-mono text-xs uppercase tracking-wider text-[var(--foreground)]
+                              transition-all duration-200
+                              hover:-translate-y-0.5 hover:border-accent hover:text-accent
+                              focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent
+                            "
+                          >
+                            <Lock size={12} className="text-accent" />
+                            <span>{isRTL ? "مشروع خاص" : "Private Project"}</span>
+                          </Link>
+                        ) : null}
+                      </div>
 
                       <span className="font-mono text-xs text-[var(--text-muted)]">
                         {formatIndex(idx + 1)}

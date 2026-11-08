@@ -394,6 +394,7 @@ export const localizedProjects: Record<Language, ProjectTranslation[]> = {
       featuredPoint:
         "A centralized business management system combining custom landing pages, order processing, 58-Wilaya shipping rate management, scalable multi-carrier integrations targeting 80+ delivery companies, and multi-platform marketing tracking.",
       image: "/projects/darna.webp",
+      caseStudyUrl: "/projects/darna",
       liveUrl: "https://darna.wldelroudjishoes.com",
       featured: true,
     },
@@ -512,6 +513,7 @@ export const localizedProjects: Record<Language, ProjectTranslation[]> = {
       featuredPoint:
         "نظام متكامل لإدارة الأعمال يجمع صفحات الهبوط المخصصة، معالجة الطلبات، إدارة أسعار التوصيل عبر 58 ولاية، بنية قابلة للتوسع لدعم أكثر من 80 شركة توصيل، وتتبع الحملات التسويقية عبر منصات متعددة.",
       image: "/projects/darna.webp",
+      caseStudyUrl: "/projects/darna",
       liveUrl: "https://darna.wldelroudjishoes.com",
       featured: true,
     },

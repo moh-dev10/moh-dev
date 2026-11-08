@@ -36,6 +36,7 @@ export const projects: Project[] = [
     featuredPoint:
       "A centralized business management system combining custom landing pages, order processing, 58-Wilaya shipping rate management, scalable multi-carrier integrations targeting 80+ delivery companies, and multi-platform marketing tracking.",
     image: "/projects/darna.webp",
+    caseStudyUrl: "/projects/darna",
     liveUrl: "https://darna.wldelroudjishoes.com",
     featured: true,
   },

@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { getAllCaseStudySlugs } from "@/data/caseStudies";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl =
@@ -10,6 +11,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       : "https://moh-dev.vercel.app");
 
   const lastModified = new Date();
+  const caseStudySlugs = getAllCaseStudySlugs();
+
+  const caseStudyEntries: MetadataRoute.Sitemap = caseStudySlugs.map((slug) => ({
+    url: `${siteUrl}/projects/${slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.8,
+    alternates: {
+      languages: {
+        en: `${siteUrl}/projects/${slug}?lang=en`,
+        ar: `${siteUrl}/projects/${slug}?lang=ar`,
+      },
+    },
+  }));
 
   return [
     {
@@ -36,5 +51,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
       },
     },
+    ...caseStudyEntries,
   ];
 }

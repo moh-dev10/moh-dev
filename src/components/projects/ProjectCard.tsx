@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, ArrowUpLeft, ExternalLink, Lock } from "lucide-react";
 import type { ProjectTranslation } from "@/data/translations";
 import { useLanguage } from "@/context/LanguageContext";
@@ -119,7 +120,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="mt-9 flex flex-wrap gap-3">
           {/* Case study */}
           {project.caseStudyUrl && (
-            <a
+            <Link
               href={project.caseStudyUrl}
               className="
                 group/link inline-flex items-center gap-2 rounded-md
@@ -146,7 +147,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                   rtl:group-hover/link:-translate-x-0.5
                 "
               />
-            </a>
+            </Link>
           )}
 
           {/* Live demo */}
